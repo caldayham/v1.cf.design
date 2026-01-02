@@ -257,6 +257,7 @@ img {
   align-items: center;
   justify-content: center;
   padding: var(--spacing-3xl) var(--spacing-md);
+  padding-top: calc(var(--spacing-3xl) + 100px);
   background: var(--color-background);
 }
 
@@ -875,6 +876,7 @@ img {
   .hero {
     min-height: auto;
     padding: var(--spacing-2xl) var(--spacing-md);
+    padding-top: calc(var(--spacing-2xl) + 80px);
   }
 
   /* Footer Nav */
@@ -973,6 +975,7 @@ img {
   /* Hero */
   .hero {
     padding: var(--spacing-xl) var(--spacing-sm);
+    padding-top: calc(var(--spacing-xl) + 70px);
   }
 
   /* Footer Nav */
