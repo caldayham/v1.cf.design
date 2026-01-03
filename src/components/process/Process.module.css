@@ -41,7 +41,7 @@
   color: var(--color-primary);
   background: var(--color-accent-light);
   padding: var(--spacing-xs) var(--spacing-sm);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-md);
 }
 
 .processTitle {

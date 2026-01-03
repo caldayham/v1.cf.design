@@ -1,0 +1,70 @@
+/* Main content area - scrolls naturally with window */
+.mainContent {
+  min-height: 100vh;
+  padding: 8px; /* Same as frame margin */
+  background: var(--color-white);
+}
+
+/* White mask outside the frame - covers all edges */
+.frameMask {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99;
+}
+
+/* Top mask */
+.frameMask::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: var(--color-surface);
+}
+
+/* Bottom mask */
+.frameMask::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: var(--color-surface);
+}
+
+/* Left mask */
+.frameMaskLeft {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 8px;
+  background: var(--color-surface);
+  pointer-events: none;
+  z-index: 99;
+}
+
+/* Right mask */
+.frameMaskRight {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 8px;
+  background: var(--color-surface);
+  pointer-events: none;
+  z-index: 99;
+}
+
+/* Visual frame border - fixed overlay that doesn't block scrolling */
+.frameBorder {
+  position: fixed;
+  inset: 8px;
+  border: 1px solid var(--color-text);
+  border-radius: var(--radius-md);
+  pointer-events: none;
+  z-index: 100;
+}

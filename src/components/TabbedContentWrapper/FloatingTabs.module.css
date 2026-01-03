@@ -1,0 +1,77 @@
+/* Tabs container - fixed at bottom center */
+.tabsContainer {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 9px;
+  display: flex;
+  gap: 0;
+  z-index: 200;
+  pointer-events: auto;
+  background: var(--color-white);
+  border-top-left-radius: var(--radius-md);
+  border-top-right-radius: var(--radius-md);
+  /* Subtle inner borders using box-shadow - Layer 1 */
+  box-shadow:
+    inset 0 1px 0 0 var(--color-border),
+    inset 1px 0 0 0 var(--color-border),
+    inset -1px 0 0 0 var(--color-border);
+}
+
+/* Individual tab */
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 0;
+  font-size: 0.9375rem; /* 15px - between sm and base */
+  font-weight: var(--font-weight-medium);
+  width: 200px;
+  text-decoration: none;
+  color: var(--color-text);
+  background: var(--color-white);
+  /* Transparent borders maintain sizing - Layer 2 inactive */
+  border-top: 1px solid transparent;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  border-bottom: 1px solid transparent; /* Always transparent for "open" effect */
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+  transition: border-color var(--transition-fast), font-weight var(--transition-fast);
+  z-index: 0;
+  margin-bottom: 0;
+}
+
+.tab:hover {
+  color: var(--color-text);
+}
+
+/* Active tab - Layer 2 with dark borders */
+.tabActive {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  border-top-color: var(--color-text);
+  border-left-color: var(--color-text);
+  border-right-color: var(--color-text);
+  /* Bottom stays transparent - creates "open to content" effect */
+  margin-bottom: -1px; /* Negative margin trick - extends tab to overlap container edge */
+  z-index: 1; /* Render on top of neighbors */
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .tab {
+    width: 90px;
+    font-size: var(--font-size-sm);
+    padding: 0.5rem 0;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .tab {
+    width: 80px;
+    font-size: var(--font-size-xs);
+    padding: 0.5rem 0;
+  }
+}

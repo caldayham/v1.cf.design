@@ -92,8 +92,6 @@
 html {
   max-width: 100vw;
   overflow-x: hidden;
-  scroll-padding-top: var(--spacing-lg);
-  scroll-padding-bottom: 80px;
   scroll-behavior: smooth;
 }
 
@@ -102,7 +100,8 @@ body {
   overflow-x: hidden;
   font-family: 'Libre Caslon Text', Georgia, serif;
   color: var(--color-text);
-  background: var(--color-background);
+  /* Background visible in the 8px margin around the frame */
+  background: var(--color-surface);
   font-size: var(--font-size-base);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;

@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Floating Tabs Implementation Guide for Next.js</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.6;
+      color: #1f2937;
+      background: #f9fafb;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      padding: 3rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 2.25rem;
+      margin-bottom: 0.5rem;
+      color: #111827;
+    }
+
+    .subtitle {
+      color: #6b7280;
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      color: #111827;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #dc143c;
+    }
+
+    h3 {
+      font-size: 1.125rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: #374151;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    ul, ol {
+      margin-bottom: 1rem;
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    code {
+      background: #f3f4f6;
+      padding: 0.125rem 0.375rem;
+      border-radius: 4px;
+      font-family: 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 0.875em;
+      color: #dc143c;
+    }
+
+    pre {
+      background: #1f2937;
+      color: #e5e7eb;
+      padding: 1.25rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin-bottom: 1.5rem;
+      font-size: 0.875rem;
+      line-height: 1.7;
+    }
+
+    pre code {
+      background: none;
+      padding: 0;
+      color: inherit;
+    }
+
+    .file-path {
+      background: #fef3c7;
+      color: #92400e;
+      padding: 0.5rem 1rem;
+      border-radius: 6px 6px 0 0;
+      font-family: monospace;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: -0.5rem;
+      display: inline-block;
+    }
+
+    .note {
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .note-title {
+      font-weight: 600;
+      color: #1e40af;
+      margin-bottom: 0.25rem;
+    }
+
+    .warning {
+      background: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .warning-title {
+      font-weight: 600;
+      color: #92400e;
+      margin-bottom: 0.25rem;
+    }
+
+    .architecture-diagram {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      padding: 1.5rem;
+      border-radius: 8px;
+      font-family: monospace;
+      white-space: pre;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      line-height: 1.4;
+    }
+
+    .comment {
+      color: #6b7280;
+    }
+
+    .keyword {
+      color: #c084fc;
+    }
+
+    .string {
+      color: #86efac;
+    }
+
+    .function {
+      color: #93c5fd;
+    }
+
+    .component {
+      color: #fcd34d;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+    }
+
+    th, td {
+      border: 1px solid #e5e7eb;
+      padding: 0.75rem;
+      text-align: left;
+    }
+
+    th {
+      background: #f9fafb;
+      font-weight: 600;
+    }
+
+    .toc {
+      background: #f9fafb;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+
+    .toc h3 {
+      margin-top: 0;
+    }
+
+    .toc ol {
+      margin-bottom: 0;
+    }
+
+    .toc a {
+      color: #374151;
+      text-decoration: none;
+    }
+
+    .toc a:hover {
+      color: #dc143c;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Floating Tabs Implementation Guide</h1>
+    <p class="subtitle">A complete guide to implementing mobile-friendly floating bottom navigation tabs in Next.js with the App Router</p>
+
+    <div class="toc">
+      <h3>Table of Contents</h3>
+      <ol>
+        <li><a href="#overview">Overview & Architecture</a></li>
+        <li><a href="#file-structure">File Structure</a></li>
+        <li><a href="#css-setup">Step 1: CSS Setup (globals.css)</a></li>
+        <li><a href="#frame-component">Step 2: Frame Component</a></li>
+        <li><a href="#floating-tabs">Step 3: FloatingTabs Component</a></li>
+        <li><a href="#wrapper">Step 4: TabbedContentWrapper</a></li>
+        <li><a href="#layout-integration">Step 5: Layout Integration</a></li>
+        <li><a href="#customization">Customization Guide</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+      </ol>
+    </div>
+
+    <h2 id="overview">1. Overview & Architecture</h2>
+
+    <p>This implementation creates a desktop app-like container with floating navigation tabs at the bottom. It's particularly effective for mobile devices where bottom navigation is more thumb-friendly than top navigation bars.</p>
+
+    <h3>Key Features</h3>
+    <ul>
+      <li><strong>Mobile-first design</strong> - Tabs are easily reachable at the bottom of the screen</li>
+      <li><strong>Desktop app aesthetic</strong> - Content is contained in a centered, bordered frame</li>
+      <li><strong>Route-based active states</strong> - Active tab automatically highlighted based on current URL</li>
+      <li><strong>Prefetched navigation</strong> - Instant tab switching with Next.js route prefetching</li>
+      <li><strong>Hidden scrollbar</strong> - Clean UI with scrollable content area</li>
+      <li><strong>Responsive sizing</strong> - Tabs resize for mobile vs desktop viewports</li>
+    </ul>
+
+    <h3>Architecture Diagram</h3>
+    <div class="architecture-diagram">
+RootLayout (app/layout.tsx)
+└── TabbedContentWrapper
+    └── Frame (fixed positioning container)
+        ├── &lt;main&gt; (scrollable content area)
+        │   └── {children} (your page content)
+        │
+        └── FloatingTabs (absolutely positioned at bottom)
+            ├── Tab: About (/)
+            ├── Tab: Portfolio (/portfolio)
+            └── Tab: Get Quote (/get-quote)</div>
+
+    <h2 id="file-structure">2. File Structure</h2>
+
+    <p>Create the following files in your Next.js project:</p>
+
+    <div class="architecture-diagram">
+your-nextjs-project/
+├── app/
+│   ├── layout.tsx          # Root layout (import wrapper here)
+│   ├── globals.css         # CSS variables & utilities
+│   ├── page.tsx            # Home page (About)
+│   ├── portfolio/
+│   │   └── page.tsx        # Portfolio page
+│   └── get-quote/
+│       └── page.tsx        # Get Quote page
+│
+└── components/
+    └── TabbedContentWrapper/
+        ├── index.tsx       # Main wrapper component
+        ├── Frame.tsx       # Fixed positioning container
+        └── FloatingTabs.tsx # The floating tab navigation</div>
+
+    <h2 id="css-setup">3. Step 1: CSS Setup (globals.css)</h2>
+
+    <p>First, set up your global styles with CSS custom properties (variables) for consistent theming and the scrollbar-hiding utility class.</p>
+
+    <div class="file-path">app/globals.css</div>
+    <pre><code><span class="keyword">@import</span> <span class="string">"tailwindcss"</span>;
+
+<span class="comment">/* ---------- SCROLL-BAR HIDER ---------- */</span>
+.hide-scrollbar {
+  scrollbar-width: none;        <span class="comment">/* Firefox */</span>
+  -ms-overflow-style: none;     <span class="comment">/* IE/Edge */</span>
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;                <span class="comment">/* Chrome, Safari, Opera */</span>
+}
+
+<span class="comment">/* ---------- DESIGN TOKENS ---------- */</span>
+:root {
+  <span class="comment">/* Neutral palette */</span>
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-gray-50:  #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-500: #6b7280;
+  --color-gray-700: #374151;
+  --color-gray-900: #111827;
+
+  <span class="comment">/* Accent color (customize to your brand) */</span>
+  --color-accent: #dc143c;
+
+  <span class="comment">/* Border radius */</span>
+  --radius-sm: .375rem;
+  --radius:    .5rem;
+  --radius-lg: .75rem;
+}</code></pre>
+
+    <div class="note">
+      <div class="note-title">Note</div>
+      <p>The CSS variables are used throughout the components for consistent styling. Change them here to update the entire theme.</p>
+    </div>
+
+    <h2 id="frame-component">4. Step 2: Frame Component</h2>
+
+    <p>The Frame component creates a fixed-position container that gives your app a desktop app-like appearance. It centers the content and adds borders with rounded corners.</p>
+
+    <div class="file-path">components/TabbedContentWrapper/Frame.tsx</div>
+    <pre><code><span class="string">'use client'</span>;
+<span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;
+
+<span class="keyword">export default function</span> <span class="function">Frame</span>({ children }: { children: React.ReactNode }) {
+  <span class="keyword">return</span> (
+    <span class="comment">{/* Outer container: fixed, full viewport, centers content */}</span>
+    &lt;<span class="component">div</span> className=<span class="string">"fixed inset-0 flex justify-center pointer-events-none z-100"</span>&gt;
+
+      <span class="comment">{/* Inner container: the visible "app window" */}</span>
+      &lt;<span class="component">div</span>
+        className=<span class="string">"flex flex-col w-full max-w-6xl pointer-events-auto overflow-hidden"</span>
+        style={{
+          margin: <span class="string">'8px'</span>,
+          border: <span class="string">'1px solid var(--color-gray-900)'</span>,
+          borderRadius: <span class="string">'var(--radius)'</span>,
+          background: <span class="string">'var(--color-white)'</span>,
+        }}
+      &gt;
+        {children}
+      &lt;/<span class="component">div</span>&gt;
+    &lt;/<span class="component">div</span>&gt;
+  );
+}</code></pre>
+
+    <h3>How the Frame Works</h3>
+    <table>
+      <tr>
+        <th>CSS Property</th>
+        <th>Purpose</th>
+      </tr>
+      <tr>
+        <td><code>fixed inset-0</code></td>
+        <td>Positions the container to cover the entire viewport</td>
+      </tr>
+      <tr>
+        <td><code>pointer-events-none</code></td>
+        <td>Allows clicks to pass through the outer container</td>
+      </tr>
+      <tr>
+        <td><code>pointer-events-auto</code></td>
+        <td>Re-enables clicks on the inner content container</td>
+      </tr>
+      <tr>
+        <td><code>max-w-6xl</code></td>
+        <td>Limits width to 1152px for large screens</td>
+      </tr>
+      <tr>
+        <td><code>margin: 8px</code></td>
+        <td>Creates a small gap around the frame (shows background)</td>
+      </tr>
+      <tr>
+        <td><code>z-100</code></td>
+        <td>Ensures the frame stays above other content</td>
+      </tr>
+    </table>
+
+    <h2 id="floating-tabs">5. Step 3: FloatingTabs Component</h2>
+
+    <p>This is the core component - the actual floating tab navigation. It uses Next.js routing to determine the active tab and prefetches routes for instant navigation.</p>
+
+    <div class="file-path">components/TabbedContentWrapper/FloatingTabs.tsx</div>
+    <pre><code><span class="string">'use client'</span>;
+<span class="keyword">import</span> React, { useEffect } <span class="keyword">from</span> <span class="string">'react'</span>;
+<span class="keyword">import</span> Link <span class="keyword">from</span> <span class="string">'next/link'</span>;
+<span class="keyword">import</span> { usePathname, useRouter } <span class="keyword">from</span> <span class="string">'next/navigation'</span>;
+<span class="keyword">import</span> { Home, Briefcase } <span class="keyword">from</span> <span class="string">'lucide-react'</span>;
+
+<span class="comment">// Define your tabs here - customize routes and icons as needed</span>
+<span class="keyword">const</span> tabs = [
+  { name: <span class="string">'About'</span>,     href: <span class="string">'/'</span>,          icon: Home       },
+  { name: <span class="string">'Portfolio'</span>, href: <span class="string">'/portfolio'</span>, icon: Briefcase  },
+  { name: <span class="string">'Get Quote'</span>, href: <span class="string">'/get-quote'</span>, icon: Briefcase  },
+];
+
+<span class="keyword">export default function</span> <span class="function">FloatingTabs</span>() {
+  <span class="keyword">const</span> pathname = <span class="function">usePathname</span>();
+  <span class="keyword">const</span> router   = <span class="function">useRouter</span>();
+
+  <span class="comment">/* Pre-fetch routes for instant tab switching */</span>
+  <span class="function">useEffect</span>(() =&gt; {
+    router.<span class="function">prefetch</span>(<span class="string">'/'</span>);
+    router.<span class="function">prefetch</span>(<span class="string">'/portfolio'</span>);
+  }, [router]);
+
+  <span class="keyword">return</span> (
+    &lt;<span class="component">div</span>
+      className=<span class="string">"pointer-events-auto flex gap-0 z-20"</span>
+      style={{
+        <span class="comment">// Position at bottom center of the Frame</span>
+        position: <span class="string">'absolute'</span>,
+        left: <span class="string">'50%'</span>,
+        transform: <span class="string">'translateX(-50%)'</span>,
+        bottom: <span class="string">'0px'</span>,
+
+        <span class="comment">// Styling</span>
+        background: <span class="string">'var(--color-white)'</span>,
+        borderTopLeftRadius:  <span class="string">'var(--radius)'</span>,
+        borderTopRightRadius: <span class="string">'var(--radius)'</span>,
+
+        <span class="comment">// Subtle inner borders using box-shadow</span>
+        boxShadow: `
+          inset 0   1px 0 0 var(--color-gray-200),
+          inset 1px  0 0 0 var(--color-gray-200),
+          inset -1px 0 0 0 var(--color-gray-200)
+        `,
+        marginBottom: <span class="string">'10px'</span>,
+      }}
+    &gt;
+      {tabs.<span class="function">map</span>(({ name, href, icon: Icon }) =&gt; {
+        <span class="keyword">const</span> active = pathname === href;
+
+        <span class="keyword">return</span> (
+          &lt;<span class="component">Link</span>
+            key={href}
+            href={href}
+            scroll={true}
+            className=<span class="string">"flex items-center justify-center gap-2 py-2 text-sm w-[115px] md:w-[180px] border-2 transition-none"</span>
+            style={{
+              <span class="comment">// Active tab has visible borders (except bottom)</span>
+              borderTop:    active ? <span class="string">'2px solid var(--color-gray-900)'</span> : <span class="string">'2px solid transparent'</span>,
+              borderLeft:   active ? <span class="string">'2px solid var(--color-gray-900)'</span> : <span class="string">'2px solid transparent'</span>,
+              borderRight:  active ? <span class="string">'2px solid var(--color-gray-900)'</span> : <span class="string">'2px solid transparent'</span>,
+              borderBottom: <span class="string">'2px solid transparent'</span>,     <span class="comment">// Always open bottom</span>
+
+              <span class="comment">// Rounded top corners only</span>
+              borderRadius: <span class="string">'var(--radius) var(--radius) 0 0'</span>,
+
+              <span class="comment">// Active tab extends slightly below to cover container border</span>
+              marginBottom: active ? <span class="string">'-2px'</span> : <span class="string">'0'</span>,
+
+              <span class="comment">// Active tab appears above inactive tabs</span>
+              zIndex: active ? 1 : 0,
+
+              <span class="comment">// Visual differentiation</span>
+              fontWeight: active ? 600 : 500,
+              color:      active ? <span class="string">'var(--color-gray-900)'</span> : <span class="string">'var(--color-gray-700)'</span>,
+              background: active ? <span class="string">'var(--color-white)'</span> : <span class="string">'transparent'</span>,
+            }}
+          &gt;
+            &lt;<span class="component">Icon</span> className=<span class="string">"w-4 h-4"</span> strokeWidth={active ? 2.5 : 2} /&gt;
+            {name}
+          &lt;/<span class="component">Link</span>&gt;
+        );
+      })}
+    &lt;/<span class="component">div</span>&gt;
+  );
+}</code></pre>
+
+    <div class="warning">
+      <div class="warning-title">Dependency Required</div>
+      <p>This component uses <code>lucide-react</code> for icons. Install it with: <code>npm install lucide-react</code></p>
+    </div>
+
+    <h3>Key Styling Techniques</h3>
+
+    <p><strong>Centering at bottom:</strong> The tabs are centered using <code>left: 50%</code> combined with <code>transform: translateX(-50%)</code>. This is more reliable than flexbox centering for absolutely positioned elements.</p>
+
+    <p><strong>Active tab effect:</strong> The active tab has a negative <code>marginBottom</code> of <code>-2px</code> which makes it extend slightly below the tab container, visually connecting it to the content area below.</p>
+
+    <p><strong>Open bottom border:</strong> All tabs have a transparent bottom border, creating the "folder tab" effect where the active tab appears to be part of the content area.</p>
+
+    <h2 id="wrapper">6. Step 4: TabbedContentWrapper</h2>
+
+    <p>This component combines the Frame and FloatingTabs into a single wrapper that you'll use in your layout.</p>
+
+    <div class="file-path">components/TabbedContentWrapper/index.tsx</div>
+    <pre><code><span class="string">'use client'</span>;
+
+<span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;
+<span class="keyword">import</span> Frame        <span class="keyword">from</span> <span class="string">'./Frame'</span>;
+<span class="keyword">import</span> FloatingTabs <span class="keyword">from</span> <span class="string">'./FloatingTabs'</span>;
+
+<span class="keyword">export default function</span> <span class="function">TabbedContentWrapper</span>({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  <span class="keyword">return</span> (
+    &lt;<span class="component">Frame</span>&gt;
+      <span class="comment">{/* Scrollable content area */}</span>
+      &lt;<span class="component">main</span>
+        className=<span class="string">"flex-1 overflow-auto bg-transparent pointer-events-auto hide-scrollbar"</span>
+        data-scroll-restoration-id=<span class="string">"main-content"</span>
+        style={{ borderRadius: <span class="string">'calc(var(--radius) - 4px)'</span> }}
+      &gt;
+        {children}
+      &lt;/<span class="component">main</span>&gt;
+
+      <span class="comment">{/* Floating tabs at bottom */}</span>
+      &lt;<span class="component">FloatingTabs</span> /&gt;
+    &lt;/<span class="component">Frame</span>&gt;
+  );
+}</code></pre>
+
+    <h3>Component Breakdown</h3>
+    <ul>
+      <li><code>flex-1</code> - Makes the main content area fill available vertical space</li>
+      <li><code>overflow-auto</code> - Enables scrolling when content exceeds viewport</li>
+      <li><code>hide-scrollbar</code> - Uses our CSS class to hide the scrollbar visually</li>
+      <li><code>data-scroll-restoration-id</code> - Helps with scroll position restoration on navigation</li>
+      <li>The border radius is slightly smaller than the Frame to account for the Frame's border width</li>
+    </ul>
+
+    <h2 id="layout-integration">7. Step 5: Layout Integration</h2>
+
+    <p>Finally, wrap your entire application with the TabbedContentWrapper in your root layout file.</p>
+
+    <div class="file-path">app/layout.tsx</div>
+    <pre><code><span class="keyword">import</span> type { Metadata } <span class="keyword">from</span> <span class="string">"next"</span>;
+<span class="keyword">import</span> { Geist, Geist_Mono } <span class="keyword">from</span> <span class="string">"next/font/google"</span>;
+<span class="keyword">import</span> <span class="string">"./globals.css"</span>;
+
+<span class="keyword">import</span> TabbedContentWrapper <span class="keyword">from</span> <span class="string">"@/components/TabbedContentWrapper"</span>;
+
+<span class="keyword">const</span> geistSans = <span class="function">Geist</span>({
+  variable: <span class="string">"--font-geist-sans"</span>,
+  subsets: [<span class="string">"latin"</span>],
+});
+
+<span class="keyword">const</span> geistMono = <span class="function">Geist_Mono</span>({
+  variable: <span class="string">"--font-geist-mono"</span>,
+  subsets: [<span class="string">"latin"</span>],
+});
+
+<span class="keyword">export const</span> metadata: Metadata = {
+  title: <span class="string">"Your App Title"</span>,
+  description: <span class="string">"Your app description"</span>,
+};
+
+<span class="keyword">export default function</span> <span class="function">RootLayout</span>({
+  children,
+}: Readonly&lt;{
+  children: React.ReactNode;
+}&gt;) {
+  <span class="keyword">return</span> (
+    &lt;<span class="component">html</span> lang=<span class="string">"en"</span>&gt;
+      &lt;<span class="component">body</span> className={`${geistSans.variable} ${geistMono.variable} antialiased`}&gt;
+
+        &lt;<span class="component">TabbedContentWrapper</span>&gt;
+          {children}
+        &lt;/<span class="component">TabbedContentWrapper</span>&gt;
+
+      &lt;/<span class="component">body</span>&gt;
+    &lt;/<span class="component">html</span>&gt;
+  );
+}</code></pre>
+
+    <div class="note">
+      <div class="note-title">Path Alias</div>
+      <p>The <code>@/components</code> path alias requires configuration in <code>tsconfig.json</code>. This is set up by default in Next.js projects created with <code>create-next-app</code>.</p>
+    </div>
+
+    <h2 id="customization">8. Customization Guide</h2>
+
+    <h3>Adding or Modifying Tabs</h3>
+    <p>Edit the <code>tabs</code> array in <code>FloatingTabs.tsx</code>:</p>
+
+    <pre><code><span class="keyword">const</span> tabs = [
+  { name: <span class="string">'Home'</span>,     href: <span class="string">'/'</span>,         icon: Home     },
+  { name: <span class="string">'Products'</span>, href: <span class="string">'/products'</span>, icon: Package  },
+  { name: <span class="string">'Cart'</span>,     href: <span class="string">'/cart'</span>,     icon: ShoppingCart },
+  { name: <span class="string">'Account'</span>,  href: <span class="string">'/account'</span>,  icon: User     },
+];</code></pre>
+
+    <h3>Changing Tab Width</h3>
+    <p>Modify the width classes in the Link component:</p>
+    <pre><code><span class="comment">// Current: 115px mobile, 180px desktop</span>
+className=<span class="string">"... w-[115px] md:w-[180px] ..."</span>
+
+<span class="comment">// Example: 100px mobile, 150px desktop</span>
+className=<span class="string">"... w-[100px] md:w-[150px] ..."</span></code></pre>
+
+    <h3>Changing Colors</h3>
+    <p>Update the CSS variables in <code>globals.css</code>:</p>
+    <pre><code>:root {
+  --color-gray-900: #111827;  <span class="comment">/* Border color for active tab */</span>
+  --color-gray-700: #374151;  <span class="comment">/* Text color for inactive tabs */</span>
+  --color-gray-200: #e5e7eb;  <span class="comment">/* Box shadow borders */</span>
+}</code></pre>
+
+    <h3>Changing Frame Width</h3>
+    <p>Modify the <code>max-w-6xl</code> class in <code>Frame.tsx</code>:</p>
+    <pre><code><span class="comment">// Current: max-width 1152px</span>
+className=<span class="string">"... max-w-6xl ..."</span>
+
+<span class="comment">// Options:</span>
+<span class="comment">// max-w-4xl = 896px</span>
+<span class="comment">// max-w-5xl = 1024px</span>
+<span class="comment">// max-w-7xl = 1280px</span>
+<span class="comment">// max-w-full = 100%</span></code></pre>
+
+    <h3>Removing the Frame Border</h3>
+    <p>For a more minimal look, remove the border in <code>Frame.tsx</code>:</p>
+    <pre><code>style={{
+  margin: <span class="string">'8px'</span>,
+  <span class="comment">// border: '1px solid var(--color-gray-900)',  // Remove this line</span>
+  borderRadius: <span class="string">'var(--radius)'</span>,
+  background: <span class="string">'var(--color-white)'</span>,
+}}</code></pre>
+
+    <h2 id="how-it-works">9. How It Works</h2>
+
+    <h3>Active Tab Detection</h3>
+    <p>The component uses Next.js's <code>usePathname()</code> hook to get the current URL path. It compares this against each tab's <code>href</code> to determine which tab should appear active:</p>
+    <pre><code><span class="keyword">const</span> pathname = <span class="function">usePathname</span>();  <span class="comment">// e.g., "/portfolio"</span>
+<span class="keyword">const</span> active = pathname === href;   <span class="comment">// true if tab matches current route</span></code></pre>
+
+    <h3>Route Prefetching</h3>
+    <p>To ensure instant navigation, routes are prefetched when the component mounts:</p>
+    <pre><code><span class="function">useEffect</span>(() =&gt; {
+  router.<span class="function">prefetch</span>(<span class="string">'/'</span>);
+  router.<span class="function">prefetch</span>(<span class="string">'/portfolio'</span>);
+}, [router]);</code></pre>
+
+    <h3>Pointer Events Strategy</h3>
+    <p>The implementation uses a clever pointer-events strategy to allow background elements to receive clicks while still having a clickable content area:</p>
+    <ol>
+      <li>Outer Frame div: <code>pointer-events-none</code> (clicks pass through)</li>
+      <li>Inner content div: <code>pointer-events-auto</code> (clicks work normally)</li>
+      <li>Tabs: <code>pointer-events-auto</code> (clicks work normally)</li>
+    </ol>
+    <p>This allows the background of the page (outside the Frame) to potentially be interactive if needed.</p>
+
+    <h3>The "Open Bottom" Tab Effect</h3>
+    <p>The classic folder-tab effect (where the active tab connects to the content below) is achieved through:</p>
+    <ol>
+      <li>Active tab has a transparent bottom border</li>
+      <li>Active tab has <code>marginBottom: -2px</code> which extends it slightly down</li>
+      <li>Active tab has <code>zIndex: 1</code> to appear above other tabs</li>
+      <li>Active tab has the same background as the content area</li>
+    </ol>
+
+    <hr style="margin: 3rem 0; border: none; border-top: 1px solid #e5e7eb;">
+
+    <p style="text-align: center; color: #6b7280; font-size: 0.875rem;">
+      Implementation from cfcbayarea.com<br>
+      Built with Next.js 15, React 19, Tailwind CSS 4, and lucide-react
+    </p>
+  </div>
+</body>
+</html>

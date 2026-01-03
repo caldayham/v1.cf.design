@@ -1,6 +1,6 @@
 .formSection {
   padding: var(--spacing-3xl) var(--spacing-md);
-  padding-bottom: calc(var(--spacing-3xl) + 80px);
+  padding-bottom: calc(var(--spacing-3xl) + 100px);
   background: var(--color-background);
 }
 

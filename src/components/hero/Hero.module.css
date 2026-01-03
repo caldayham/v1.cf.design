@@ -1,11 +1,10 @@
 .hero {
-  min-height: 100vh;
+  min-height: calc(100vh - 100px);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-3xl) var(--spacing-md);
-  padding-top: calc(var(--spacing-3xl) + 60px);
-  padding-bottom: calc(var(--spacing-3xl) + 40px);
+  padding: var(--spacing-2xl) var(--spacing-md);
+  padding-bottom: var(--spacing-3xl);
   background: var(--color-background);
 }
 
@@ -51,10 +50,10 @@
 
 .heroCta {
   display: inline-block;
-  padding: 0.75rem var(--spacing-xl);
-  font-size: var(--font-size-base);
+  padding: 0.5rem var(--spacing-lg);
+  font-size: 1rem; /* 16px */
   font-weight: var(--font-weight-semibold);
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-md);
   cursor: pointer;
   transition: all var(--transition-base);
   text-decoration: none;
@@ -102,7 +101,6 @@
   .hero {
     min-height: auto;
     padding: var(--spacing-2xl) var(--spacing-md);
-    padding-top: calc(var(--spacing-2xl) + 80px);
   }
 
   .heroTitle {
@@ -123,7 +121,6 @@
 @media (max-width: 480px) {
   .hero {
     padding: var(--spacing-xl) var(--spacing-sm);
-    padding-top: calc(var(--spacing-xl) + 70px);
   }
 
   .heroTitle {
