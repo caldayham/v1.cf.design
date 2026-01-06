@@ -1,26 +1,37 @@
+import Image from 'next/image';
 import styles from './Hero.module.css';
 
 export default function Hero() {
   return (
     <section className={styles.hero} id="hero">
+      <div className={styles.heroBackgroundLogoWrapper}>
+        <Image
+          src="/baystone-text-logo.png"
+          alt=""
+          fill
+          sizes="150vw"
+          className={styles.heroBackgroundLogo}
+          priority
+        />
+      </div>
       <div className={styles.heroContainer}>
         <h1 className={styles.heroTitle}>Quality Landscape Design</h1>
         <div className={styles.heroCtaWrapper}>
           <p className={styles.aboutText}>
             Reimagining your outdoor space should be exciting, not stressful.
-            For most homeowners, <br/>two hurdles stand between intent and reality: the right design, and the right contractor.
+            For most homeowners, two hurdles stand between intent and reality: the right design, and the right contractor.
           </p>
         </div>
         <div className={styles.heroButtonsWrapper}>
-          <div className={styles.heroButtons}>
+          <div className={styles.heroPrimaryButtonWrapper}>
             <a href="#contact" className={`${styles.heroCta} ${styles.heroCtaPrimary}`}>
-              Book an On-Site Consultation
+              On-Site Consultation Inquiries
             </a>
-            <a href="#contact" className={`${styles.heroCta} ${styles.heroCtaSecondary}`}>
-              About the Brothers
-            </a>
+            <p className={styles.heroDisclaimer}>*Free within 30 minutes of Palo Alto</p>
           </div>
-          <p className={styles.heroDisclaimer}>*Free within 30 minutes of Palo Alto</p>
+          <a href="#contact" className={`${styles.heroCta} ${styles.heroCtaSecondary}`}>
+            About the Brothers
+          </a>
         </div>
       </div>
     </section>

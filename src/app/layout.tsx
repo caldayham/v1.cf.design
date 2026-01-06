@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Libre_Caslon_Text } from 'next/font/google';
 import './globals.css';
-import TabbedContentWrapper from '@/components/TabbedContentWrapper';
 
 const libreCaslon = Libre_Caslon_Text({
   subsets: ['latin'],
@@ -11,10 +10,10 @@ const libreCaslon = Libre_Caslon_Text({
 });
 
 export const metadata: Metadata = {
-  title: 'Quality Landscapes - Laurel',
-  description: 'Transform your outdoor space with Laurel. Award-winning landscape design that elevates your property\'s beauty and value. Book your free consultation today.',
+  title: 'Quality Landscapes - Baystone',
+  description: 'Transform your outdoor space with Baystone. Award-winning landscape design that elevates your property\'s beauty and value. Book your free consultation today.',
   icons: {
-    icon: '/Laurel-icon-leaf.png',
+    icon: '/baystone-text-icon.png',
   },
 };
 
@@ -26,9 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={libreCaslon.className}>
-        <TabbedContentWrapper>
-          {children}
-        </TabbedContentWrapper>
+        {children}
       </body>
     </html>
   );
