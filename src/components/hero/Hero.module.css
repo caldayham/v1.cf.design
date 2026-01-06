@@ -16,14 +16,14 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 70vw;
-  height: 25vw;
+  width: 100vw;
+  height: 35vw;
   z-index: 0;
   pointer-events: none;
 }
 
 .heroBackgroundLogo {
-  opacity: 0.08;
+  opacity: 0.15;
   filter: blur(2px);
   object-fit: contain;
 }
