@@ -64,6 +64,29 @@ export default function Process() {
             </div>
           </div>
         </div>
+
+        {/* Good Fit Section */}
+        <div className={styles.fitSection}>
+          <div className={styles.fitGrid}>
+            <div className={styles.fitCard}>
+              <h3 className={styles.fitTitle}>Our expertise fits homeowners who...</h3>
+              <ul className={styles.fitList}>
+                <li>Value in-person collaboration and arriving at the right design even if it takes a 4-8 weeks</li>
+                <li>Want ideas unique to your space, not recycled templates</li>
+                <li>Have a starting budget of $80k+</li>
+                <li>Want support beyond design&mdash;contractor introductions and construction oversight included</li>
+              </ul>
+            </div>
+            <div className={`${styles.fitCard} ${styles.fitCardAlt}`}>
+              <h3 className={styles.fitTitle}>We're not your best option if you...</h3>
+              <ul className={styles.fitList}>
+                <li>Plan to DIY the project or work with unlicensed contractors</li>
+                <li>Are a contractor or builder looking for design inspiration for an upcoming build</li>
+                <li>Need help with a singular landscaping component like a fence, garden box, or irrigation system</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

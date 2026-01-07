@@ -75,7 +75,7 @@
 
 .heroCta {
   display: inline-block;
-  padding: var(--spacing-xs) var(--spacing-lg);
+  padding: var(--button-padding-y) var(--spacing-lg);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-semibold);
   border-radius: var(--radius-lg);
@@ -133,7 +133,7 @@
   }
 
   .heroCta {
-    padding: var(--spacing-xs) var(--spacing-xl);
+    padding: var(--button-padding-y) var(--spacing-xl);
     font-size: var(--font-size-base);
   }
 
@@ -159,7 +159,7 @@
   }
 
   .heroCta {
-    padding: var(--spacing-xs) var(--spacing-md);
+    padding: var(--button-padding-y) var(--spacing-md);
     font-size: var(--font-size-sm);
   }
 

@@ -1,0 +1,181 @@
+# Baystone Landscape Design - Site Architecture
+
+## Overview
+Next.js 14 App Router site with TypeScript and CSS Modules. Single-page marketing site for a landscape design consultancy.
+
+---
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── globals.css      # Global CSS variables and resets
+│   ├── layout.tsx       # Root layout with font loading
+│   └── page.tsx         # Main page component (client-side for state)
+├── components/
+│   ├── header/          # Fixed navigation header + mobile menu
+│   ├── hero/            # Hero section with background logo
+│   ├── purpose/         # Company purpose + "Who We Serve" section
+│   ├── process/         # 3-step process cards
+│   ├── portfolio/       # Project showcase
+│   ├── cta_button/      # Floating consultation CTA (scroll-triggered)
+│   └── intake_form/     # Multi-step intake form
+public/
+├── baystone-text-logo.png
+└── baystone-text-icon.png
+```
+
+---
+
+## Global CSS Variables (globals.css)
+
+All design tokens are defined in `:root`. Always use these instead of hardcoded values.
+
+### Button Standard
+```css
+--button-padding-y: var(--spacing-xs);  /* Vertical padding for ALL buttons */
+```
+**CRITICAL**: All buttons (hero CTAs, floating CTA, form buttons) must use `--button-padding-y` for vertical padding to maintain consistent heights across the site.
+
+### Spacing Scale
+```css
+--spacing-xs: 0.5rem;    /* 8px */
+--spacing-sm: 1rem;      /* 16px */
+--spacing-md: 1.5rem;    /* 24px */
+--spacing-lg: 2rem;      /* 32px */
+--spacing-xl: 3rem;      /* 48px */
+--spacing-2xl: 4rem;     /* 64px */
+--spacing-3xl: 6rem;     /* 96px */
+```
+
+### Typography Scale
+```css
+--font-size-xs through --font-size-6xl
+```
+
+### Colors
+- Primary: `--color-primary` (blue #2563eb)
+- Text: `--color-text` (black), `--color-text-light` (gray)
+- Backgrounds: `--color-background` (white), `--color-surface` (off-white)
+- Borders: `--color-border` (light gray)
+
+### Border Radius
+```css
+--radius-sm, --radius-md, --radius-lg, --radius-xl, --radius-full
+```
+
+---
+
+## Component Patterns
+
+### State Flow (page.tsx)
+The main page is a client component that manages:
+- `isFormVisible` - Controls CTA button visibility via IntersectionObserver
+
+```tsx
+<Header hideCtaButton={isFormVisible} />
+<IntakeForm onFormVisible={handleFormVisible} />
+```
+
+### Button Styling Pattern
+All buttons follow this structure:
+```css
+.button {
+  padding: var(--button-padding-y) var(--spacing-lg);  /* Use global vertical */
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-md);
+  border: 2px solid var(--color-primary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+```
+
+Primary button:
+```css
+background: var(--color-primary);
+color: var(--color-white);
+```
+
+Secondary/outline button:
+```css
+background: var(--color-white);
+color: var(--color-primary);
+```
+
+### Section Pattern
+Each major section follows:
+```css
+.section {
+  padding: var(--spacing-3xl) var(--spacing-md);
+  background: var(--color-background);  /* or --color-surface for contrast */
+}
+
+.container {
+  max-width: [600-1000px depending on content];
+  margin: 0 auto;
+}
+```
+
+### Responsive Breakpoints
+```css
+/* Tablet */
+@media (max-width: 768px) { }
+
+/* Mobile */
+@media (max-width: 480px) { }
+```
+
+---
+
+## Component Reference
+
+### Header (header/)
+- Fixed position on desktop, hidden on mobile
+- Mobile: Hamburger button (bottom-right), full-screen overlay menu
+- Renders CTAButton internally
+- Props: `hideCtaButton?: boolean`
+
+### CTAButton (cta_button/)
+- Fixed floating button, appears after 50% scroll
+- Hidden when intake form is visible (via `forceHide` prop)
+- Smooth scrolls to `#contact`
+
+### IntakeForm (intake_form/)
+- 5-step multi-slide form with progress bar
+- Steps: Location → Situation → Years Owned → Project Description → Contact
+- Uses IntersectionObserver to report visibility to parent
+
+### Hero (hero/)
+- Full viewport height
+- Large translucent background logo (Next.js Image with `fill`)
+- Background logo: 85vw width, 0.04 opacity, 2px blur
+
+### Purpose (purpose/)
+- Contains "Our Purpose" text and YouTube embed
+- Includes "Who We Serve" subsection with 2 audience cards
+
+### Process (process/)
+- 3 cards: Consultation, Design, Build
+- Numbered steps (01, 02, 03)
+
+---
+
+## Adding New Components
+
+1. Create directory: `src/components/component_name/`
+2. Create files: `ComponentName.tsx` and `ComponentName.module.css`
+3. Use CSS variables from globals.css
+4. For buttons, always use `--button-padding-y` for vertical padding
+5. Follow responsive pattern (base → 768px → 480px)
+
+---
+
+## Common Gotchas
+
+1. **Button heights**: Always use `--button-padding-y`, never hardcode vertical padding
+2. **Next.js Image sizing**: Use wrapper div with explicit dimensions + `fill` prop
+3. **Fixed positioning**: Use `position: fixed` instead of `sticky` for header (fragment structure)
+4. **Client components**: Add `'use client'` directive for any component using hooks
+5. **Font**: Site uses Libre Caslon Text (serif), loaded in layout.tsx

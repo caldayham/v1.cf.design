@@ -7,8 +7,8 @@ export default function PurposeSection() {
         <h2 className="section-title">Our Purpose</h2>
         <p className={styles.aboutText}>
           Baystone exists to produce execptional landscaping engagements between homeowners and contractors.
-          
-          There are really two sills 
+
+          There are really two sills
 
           There is some natural friction that&apos;s common in construction, we reduce that friction for a percentage of the cost savings.
           <br />
@@ -31,6 +31,16 @@ export default function PurposeSection() {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
+        </div>
+
+        <div className={styles.brothersSection}>
+          <h3 className={styles.brothersTitle}>About the Brothers</h3>
+          <p className={styles.brothersText}>
+            Baystone was founded by two brothers who grew up working alongside their father in landscape construction.
+            After years of seeing homeowners struggle with unclear designs and unreliable contractors, they set out to
+            bridge the gap between vision and execution. Today, they combine hands-on building experience with
+            professional design expertise to deliver outdoor spaces that actually get built right.
+          </p>
         </div>
       </div>
     </section>

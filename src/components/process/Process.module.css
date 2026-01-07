@@ -88,9 +88,77 @@
   color: var(--color-text);
 }
 
+/* Fit Section */
+.fitSection {
+  margin-top: var(--spacing-3xl);
+  padding-top: var(--spacing-2xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.fitGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-xl);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.fitCard {
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-md);
+  border-left: 4px solid var(--color-primary);
+}
+
+.fitCardAlt {
+  border-left-color: var(--color-text-muted);
+}
+
+.fitTitle {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin-bottom: var(--spacing-lg);
+}
+
+.fitList {
+  list-style: none;
+  padding: 0;
+}
+
+.fitList li {
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  color: var(--color-text-light);
+  padding: var(--spacing-xs) 0;
+  padding-left: var(--spacing-md);
+  position: relative;
+}
+
+.fitList li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.75em;
+  width: 6px;
+  height: 6px;
+  background: var(--color-primary);
+  border-radius: 50%;
+}
+
+.fitCardAlt .fitList li::before {
+  background: var(--color-text-muted);
+}
+
 /* Tablet */
 @media (max-width: 968px) {
   .processGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .fitGrid {
     grid-template-columns: 1fr;
     gap: var(--spacing-lg);
   }
@@ -99,6 +167,10 @@
 @media (max-width: 768px) {
   .process {
     padding: var(--spacing-2xl) var(--spacing-md);
+  }
+
+  .fitTitle {
+    font-size: var(--font-size-lg);
   }
 }
 
@@ -114,5 +186,14 @@
 
   .processTitle {
     font-size: var(--font-size-xl);
+  }
+
+  .fitCard {
+    padding: var(--spacing-lg);
+  }
+
+  .fitSection {
+    margin-top: var(--spacing-2xl);
+    padding-top: var(--spacing-xl);
   }
 }

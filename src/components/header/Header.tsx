@@ -4,10 +4,18 @@ import { useState, useCallback } from 'react';
 import styles from './Header.module.css';
 import CTAButton from '@/components/cta_button/CTAButton';
 
-const navLinks = [
+interface NavLink {
+  id?: string;
+  href?: string;
+  label: string;
+  external?: boolean;
+}
+
+const navLinks: NavLink[] = [
   { id: 'purpose', label: 'Purpose' },
   { id: 'process', label: 'Process' },
   { id: 'portfolio', label: 'Portfolio' },
+  { href: '/blog', label: 'Blog', external: true },
 ];
 
 interface HeaderProps {
@@ -40,14 +48,26 @@ export default function Header({ hideCtaButton = false }: HeaderProps) {
       <header className={styles.header}>
         <nav className={styles.nav}>
           {navLinks.map((link) => (
-            <a
-              key={link.id}
-              href={`#${link.id}`}
-              className={styles.navLink}
-              onClick={(e) => handleNavClick(e, link.id)}
-            >
-              {link.label}
-            </a>
+            link.external ? (
+              <a
+                key={link.href}
+                href={link.href}
+                className={styles.navLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link.label}
+              </a>
+            ) : (
+              <a
+                key={link.id}
+                href={`#${link.id}`}
+                className={styles.navLink}
+                onClick={(e) => handleNavClick(e, link.id!)}
+              >
+                {link.label}
+              </a>
+            )
           ))}
         </nav>
       </header>
@@ -72,14 +92,27 @@ export default function Header({ hideCtaButton = false }: HeaderProps) {
       <div className={`${styles.mobileOverlay} ${isMenuOpen ? styles.mobileOverlayOpen : ''}`}>
         <nav className={styles.mobileNav}>
           {navLinks.map((link) => (
-            <a
-              key={link.id}
-              href={`#${link.id}`}
-              className={styles.mobileNavLink}
-              onClick={(e) => handleNavClick(e, link.id)}
-            >
-              {link.label}
-            </a>
+            link.external ? (
+              <a
+                key={link.href}
+                href={link.href}
+                className={styles.mobileNavLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {link.label}
+              </a>
+            ) : (
+              <a
+                key={link.id}
+                href={`#${link.id}`}
+                className={styles.mobileNavLink}
+                onClick={(e) => handleNavClick(e, link.id!)}
+              >
+                {link.label}
+              </a>
+            )
           ))}
         </nav>
       </div>

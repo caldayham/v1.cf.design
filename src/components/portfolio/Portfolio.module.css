@@ -1,25 +1,60 @@
 .portfolio {
-  padding: var(--spacing-3xl) var(--spacing-md);
+  padding: var(--spacing-3xl) 0;
   background: var(--color-surface);
 }
 
 .portfolioContainer {
   max-width: var(--max-width-container);
   margin: 0 auto;
+  padding: 0 var(--spacing-md);
 }
 
-.portfolioGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: var(--spacing-xl);
+.scrollHint {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.carouselWrapper {
+  margin: 0 calc(-1 * var(--spacing-md));
+  padding: 0 var(--spacing-md);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) var(--color-border);
+  -webkit-overflow-scrolling: touch;
+}
+
+.carouselWrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.carouselWrapper::-webkit-scrollbar-track {
+  background: var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.carouselWrapper::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: var(--radius-md);
+}
+
+.carousel {
+  display: flex;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-sm) 0 var(--spacing-lg);
 }
 
 .portfolioCard {
+  flex: 0 0 320px;
   background: var(--color-white);
   border-radius: var(--radius-xl);
   overflow: hidden;
   box-shadow: var(--shadow-md);
   transition: transform var(--transition-base), box-shadow var(--transition-base);
+  scroll-snap-align: start;
 }
 
 .portfolioCard:hover {
@@ -27,53 +62,104 @@
   box-shadow: var(--shadow-xl);
 }
 
-.portfolioImage {
+.portfolioImageWrapper {
+  position: relative;
   width: 100%;
   aspect-ratio: 4 / 3;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  overflow: hidden;
 }
 
-.portfolioPlaceholderText {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-medium);
+.portfolioImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-base);
+}
+
+.portfolioCard:hover .portfolioImage {
+  transform: scale(1.05);
+}
+
+.statusBadge {
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+  background: var(--color-primary);
   color: var(--color-white);
-  opacity: 0.8;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-md);
+}
+
+.statusInProgress {
+  background: var(--color-text-muted);
 }
 
 .portfolioInfo {
-  padding: var(--spacing-lg);
+  padding: var(--spacing-md);
 }
 
 .portfolioName {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
   color: var(--color-text);
   margin-bottom: var(--spacing-xs);
+  line-height: 1.3;
 }
 
 .portfolioLocation {
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-sm);
   color: var(--color-text-light);
+  margin-bottom: var(--spacing-sm);
+}
+
+.scopeTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.scopeTag {
+  display: inline-block;
+  font-size: var(--font-size-xs);
+  color: var(--color-primary);
+  background: var(--color-accent-light);
+  padding: 2px var(--spacing-xs);
+  border-radius: var(--radius-sm);
+  font-weight: var(--font-weight-medium);
 }
 
 /* Tablet */
 @media (max-width: 768px) {
   .portfolio {
-    padding: var(--spacing-2xl) var(--spacing-md);
+    padding: var(--spacing-2xl) 0;
   }
 
-  .portfolioGrid {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
+  .portfolioCard {
+    flex: 0 0 280px;
+  }
+
+  .portfolioName {
+    font-size: var(--font-size-base);
   }
 }
 
 /* Mobile */
 @media (max-width: 480px) {
   .portfolio {
-    padding: var(--spacing-xl) var(--spacing-sm);
+    padding: var(--spacing-xl) 0;
+  }
+
+  .portfolioCard {
+    flex: 0 0 260px;
+  }
+
+  .portfolioInfo {
+    padding: var(--spacing-sm);
+  }
+
+  .scopeTag {
+    font-size: 10px;
   }
 }

@@ -5,7 +5,7 @@
   transform: translateX(-50%) translateY(100px);
   background: var(--color-primary);
   color: var(--color-white);
-  padding: var(--spacing-xs) var(--spacing-3xl);
+  padding: var(--button-padding-y) var(--spacing-3xl);
   border-radius: var(--radius-lg);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-semibold);
@@ -37,7 +37,7 @@
     transform: translateX(0) translateY(100px);
     text-align: center;
     border-radius: var(--radius-md);
-    padding: var(--spacing-xs) var(--spacing-md);
+    padding: var(--button-padding-y) var(--spacing-md);
   }
 
   .buttonVisible {

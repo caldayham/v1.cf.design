@@ -76,6 +76,9 @@
   /* Layout */
   --max-width-container: 1200px;
   --header-height: 80px;
+
+  /* Button Standards */
+  --button-padding-y: var(--spacing-xs);  /* Vertical padding for all buttons */
 }
 
 /* ================================

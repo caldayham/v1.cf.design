@@ -46,6 +46,28 @@
   border: none;
 }
 
+/* Brothers Section */
+.brothersSection {
+  margin-top: var(--spacing-3xl);
+  padding-top: var(--spacing-2xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.brothersTitle {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin-bottom: var(--spacing-lg);
+}
+
+.brothersText {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-light);
+  line-height: 1.8;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
 /* Tablet */
 @media (max-width: 768px) {
   .about {
@@ -53,6 +75,14 @@
   }
 
   .aboutText {
+    font-size: var(--font-size-base);
+  }
+
+  .brothersTitle {
+    font-size: var(--font-size-xl);
+  }
+
+  .brothersText {
     font-size: var(--font-size-base);
   }
 }
@@ -66,5 +96,10 @@
   .aboutText {
     font-size: var(--font-size-base);
     line-height: 1.7;
+  }
+
+  .brothersSection {
+    margin-top: var(--spacing-2xl);
+    padding-top: var(--spacing-xl);
   }
 }

@@ -7,10 +7,22 @@ interface IntakeFormProps {
   onFormVisible?: (visible: boolean) => void;
 }
 
+const TOTAL_STEPS = 5;
+
+const situationOptions = [
+  'Just starting the process',
+  'Have talked to designers/contractors, looking for additional input',
+  'Unsatisfied with received designs or installations, looking for better direction',
+];
+
+const yearsOwnedOptions = ['<1 year', '1-5 years', '5-20 years', '20+ years'];
+
 export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     isLocal: null as boolean | null,
+    situation: '',
+    yearsOwned: '',
     projectDescription: '',
     name: '',
     phone: '',
@@ -34,14 +46,36 @@ export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
     return () => observer.disconnect();
   }, [onFormVisible]);
 
+  const progressPercent = (currentStep / TOTAL_STEPS) * 100;
+
   const handleLocalSelect = (isLocal: boolean) => {
     setFormData({ ...formData, isLocal });
-    setCurrentStep(2);
+    // Auto-advance after short delay for visual feedback
+    setTimeout(() => setCurrentStep(2), 300);
+  };
+
+  const handleSituationSelect = (situation: string) => {
+    setFormData({ ...formData, situation });
+    // Auto-advance after short delay for visual feedback
+    setTimeout(() => setCurrentStep(3), 300);
+  };
+
+  const handleYearsSelect = (years: string) => {
+    setFormData({ ...formData, yearsOwned: years });
+    // Auto-advance after short delay for visual feedback
+    setTimeout(() => setCurrentStep(4), 300);
   };
 
   const handleNext = () => {
-    if (currentStep === 2 && formData.projectDescription.trim()) {
+    if (currentStep === 1 && formData.isLocal !== null) {
+      setCurrentStep(2);
+    } else if (currentStep === 2 && formData.situation) {
       setCurrentStep(3);
+    } else if (currentStep === 3 && formData.yearsOwned) {
+      setCurrentStep(4);
+    } else if (currentStep === 4) {
+      // Project description is optional
+      setCurrentStep(5);
     }
   };
 
@@ -57,16 +91,21 @@ export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
     }
   };
 
-  const getStepDotClass = (step: number) => {
-    if (currentStep === step) return `${styles.stepDot} ${styles.stepDotActive}`;
-    if (currentStep > step) return `${styles.stepDot} ${styles.stepDotCompleted}`;
-    return styles.stepDot;
-  };
-
   const getStepClass = (step: number) => {
     if (currentStep === step) return `${styles.formStep} ${styles.stepActive}`;
     if (currentStep > step) return `${styles.formStep} ${styles.stepLeft}`;
     return `${styles.formStep} ${styles.stepRight}`;
+  };
+
+  const canProceed = () => {
+    switch (currentStep) {
+      case 1: return formData.isLocal !== null;
+      case 2: return !!formData.situation;
+      case 3: return !!formData.yearsOwned;
+      case 4: return true; // Project description is optional
+      case 5: return !!formData.name && !!formData.phone;
+      default: return false;
+    }
   };
 
   return (
@@ -74,109 +113,157 @@ export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
       <div className={styles.formContainer}>
         <div className={styles.formHeader}>
           <h2 className={styles.formTitle}>Get Started</h2>
-          <p className={styles.formSubtitle}>Book a free consultation to discuss your project</p>
+          <p className={styles.formSubtitle}>A couple questions to see if we're the right fit!</p>
         </div>
 
         <div className={styles.formCard}>
-          <div className={styles.stepIndicator}>
-            <div className={getStepDotClass(1)}>1</div>
-            <div className={styles.stepLine}></div>
-            <div className={getStepDotClass(2)}>2</div>
-            <div className={styles.stepLine}></div>
-            <div className={getStepDotClass(3)}>3</div>
+          <div className={styles.progressBar}>
+            <div
+              className={styles.progressFill}
+              style={{ width: `${progressPercent}%` }}
+            />
           </div>
 
-          <div className={styles.formContent}>
-            {/* Step 1: Location Question */}
-            <div className={getStepClass(1)}>
-              <div className={styles.slideContent}>
-                <h3 className={styles.slideQuestion}>Do you live within 30 minutes of Palo Alto?</h3>
-                <p className={styles.slideNote}>*CFC is typically a local-only company, San Francisco to San Jose.</p>
+          <div className={styles.formBody}>
+            <div className={styles.formContent}>
+              {/* Step 1: Location Question */}
+              <div className={getStepClass(1)}>
+                <div className={styles.slideContent}>
+                  <h3 className={styles.slideQuestion}>Do you live within 30 minutes of Palo Alto?</h3>
+                  <p className={styles.slideNote}>*CFC is typically a local-only company, San Francisco to San Jose.</p>
 
-                <div className={styles.buttonGroup}>
-                  <button
-                    type="button"
-                    className={`${styles.optionButton} ${formData.isLocal === true ? styles.optionButtonSelected : ''}`}
-                    onClick={() => handleLocalSelect(true)}
-                  >
-                    Yes
-                  </button>
-                  <button
-                    type="button"
-                    className={`${styles.optionButton} ${formData.isLocal === false ? styles.optionButtonSelected : ''}`}
-                    onClick={() => handleLocalSelect(false)}
-                  >
-                    No
-                  </button>
+                  <div className={styles.buttonGroup}>
+                    <button
+                      type="button"
+                      className={`${styles.optionButton} ${formData.isLocal === true ? styles.optionButtonSelected : ''}`}
+                      onClick={() => handleLocalSelect(true)}
+                    >
+                      Yes
+                    </button>
+                    <button
+                      type="button"
+                      className={`${styles.optionButton} ${formData.isLocal === false ? styles.optionButtonSelected : ''}`}
+                      onClick={() => handleLocalSelect(false)}
+                    >
+                      No
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 2: Current Situation */}
+              <div className={getStepClass(2)}>
+                <div className={styles.slideContent}>
+                  <h3 className={styles.slideQuestion}>Which option best describes your current situation?</h3>
+
+                  <div className={styles.optionsList}>
+                    {situationOptions.map((option) => (
+                      <button
+                        key={option}
+                        type="button"
+                        className={`${styles.optionButton} ${formData.situation === option ? styles.optionButtonSelected : ''}`}
+                        onClick={() => handleSituationSelect(option)}
+                      >
+                        {option}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 3: Years Owned */}
+              <div className={getStepClass(3)}>
+                <div className={styles.slideContent}>
+                  <h3 className={styles.slideQuestion}>How many years have you owned your home?</h3>
+
+                  <div className={styles.optionsGrid}>
+                    {yearsOwnedOptions.map((option) => (
+                      <button
+                        key={option}
+                        type="button"
+                        className={`${styles.optionButtonSmall} ${formData.yearsOwned === option ? styles.optionButtonSelected : ''}`}
+                        onClick={() => handleYearsSelect(option)}
+                      >
+                        {option}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Step 4: Project Description */}
+              <div className={getStepClass(4)}>
+                <div className={styles.slideContent}>
+                  <h3 className={styles.slideQuestion}>Tell us a little more about your project <span className={styles.optionalLabel}>(optional)</span></h3>
+
+                  <textarea
+                    className={styles.textarea}
+                    placeholder="Looking for a full outdoor redesign, maybe a pool as well"
+                    value={formData.projectDescription}
+                    onChange={(e) => setFormData({ ...formData, projectDescription: e.target.value })}
+                    rows={5}
+                  />
+                </div>
+              </div>
+
+              {/* Step 5: Contact Information */}
+              <div className={getStepClass(5)}>
+                <div className={styles.slideContent}>
+                  <h3 className={styles.slideQuestion}>How should we contact you?</h3>
+                  <p className={styles.privacyNote}>Cal or Fynn will reach out via text message within 24 hours 
+                    <br/>to schedule your consultation.</p>
+
+                  <div className={styles.inputGroup}>
+                    <input
+                      type="text"
+                      className={styles.input}
+                      placeholder="Your name"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    />
+                    <input
+                      type="tel"
+                      className={styles.input}
+                      placeholder="(555) 123-4567"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    />
+                  </div>
+                  <p className={styles.privacyNote}>
+                    We only use your information to contact you directly. 
+                    <br/>We never share your information.
+                  </p>
                 </div>
               </div>
             </div>
 
-            {/* Step 2: Project Description */}
-            <div className={getStepClass(2)}>
-              <div className={styles.slideContent}>
-                <h3 className={styles.slideQuestion}>Tell us a little more about your project</h3>
-
-                <textarea
-                  className={styles.textarea}
-                  placeholder="Looking for a full outdoor redesign, maybe a pool as well"
-                  value={formData.projectDescription}
-                  onChange={(e) => setFormData({ ...formData, projectDescription: e.target.value })}
-                  rows={5}
-                />
-
-                <div className={styles.navigationButtons}>
+            {/* Fixed Navigation Footer */}
+            <div className={styles.formFooter}>
+              <div className={styles.navigationButtons}>
+                {currentStep > 1 && (
                   <button type="button" className={styles.backButton} onClick={handleBack}>
                     Back
                   </button>
+                )}
+                {currentStep < 5 ? (
                   <button
                     type="button"
                     className={styles.nextButton}
                     onClick={handleNext}
-                    disabled={!formData.projectDescription.trim()}
+                    disabled={!canProceed()}
                   >
                     Next
                   </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Step 3: Contact Information */}
-            <div className={getStepClass(3)}>
-              <div className={styles.slideContent}>
-                <h3 className={styles.slideQuestion}>What&apos;s your name and phone number?</h3>
-                <p className={styles.privacyNote}>We only use your information to contact you directly. We never share or sell your information.</p>
-
-                <div className={styles.inputGroup}>
-                  <input
-                    type="text"
-                    className={styles.input}
-                    placeholder="Your name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  />
-                  <input
-                    type="tel"
-                    className={styles.input}
-                    placeholder="(555) 123-4567"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  />
-                </div>
-
-                <div className={styles.navigationButtons}>
-                  <button type="button" className={styles.backButton} onClick={handleBack}>
-                    Back
-                  </button>
+                ) : (
                   <button
                     type="button"
                     className={styles.submitButton}
                     onClick={handleSubmit}
-                    disabled={!formData.name || !formData.phone}
+                    disabled={!canProceed()}
                   >
                     Submit
                   </button>
-                </div>
+                )}
               </div>
             </div>
           </div>
