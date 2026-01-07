@@ -9,6 +9,18 @@
   padding: 0 var(--spacing-md);
 }
 
+.projects {
+  margin-top: var(--spacing-xl);
+}
+
+.projectsTitle {
+  text-align: center;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin-bottom: var(--spacing-sm);
+}
+
 .scrollHint {
   text-align: center;
   color: var(--color-text-muted);

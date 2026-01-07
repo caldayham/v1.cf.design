@@ -5,7 +5,7 @@ import Header from '@/components/header/Header';
 import Hero from '@/components/hero/Hero';
 import Purpose from '@/components/purpose';
 import Process from '@/components/process/Process';
-import Portfolio from '@/components/portfolio/Portfolio';
+import Portfolio from '@/components/portfolio';
 import IntakeForm from '@/components/intake_form/IntakeForm';
 
 export default function Home() {

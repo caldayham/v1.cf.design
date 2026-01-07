@@ -11,7 +11,7 @@
 
 .formHeader {
   text-align: center;
-  margin-bottom: var(--spacing-2xl);
+  margin-bottom: var(--spacing-lg);
 }
 
 .formTitle {
@@ -22,7 +22,7 @@
 }
 
 .formSubtitle {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-base);
   color: var(--color-text-light);
 }
 
@@ -30,7 +30,7 @@
   background: var(--color-white);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
-  padding: var(--spacing-2xl);
+  padding: var(--spacing-xl);
   overflow: hidden;
 }
 
@@ -40,7 +40,7 @@
   height: 6px;
   background: var(--color-border);
   border-radius: var(--radius-full);
-  margin-bottom: var(--spacing-2xl);
+  margin-bottom: var(--spacing-lg);
   overflow: hidden;
 }
 
@@ -55,7 +55,7 @@
 .formBody {
   display: flex;
   flex-direction: column;
-  height: 420px;
+  height: 380px;
 }
 
 .formContent {
@@ -111,7 +111,7 @@
   font-size: var(--font-size-xl);
   font-weight: var(--font-weight-bold);
   color: var(--color-text);
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
 }
 
 .optionalLabel {
@@ -123,7 +123,7 @@
 .slideNote {
   font-size: var(--font-size-sm);
   color: #9ca3af;
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: var(--spacing-md);
   font-style: italic;
 }
 
@@ -332,7 +332,7 @@
   }
 
   .formBody {
-    height: 460px;
+    height: 400px;
   }
 
   .slideQuestion {
@@ -359,7 +359,7 @@
   }
 
   .formBody {
-    height: 480px;
+    height: 420px;
   }
 
   .buttonGroup {

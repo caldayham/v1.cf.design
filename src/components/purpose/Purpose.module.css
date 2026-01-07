@@ -46,26 +46,104 @@
   border: none;
 }
 
-/* Brothers Section */
-.brothersSection {
+/* Meet the Team Section */
+.teamSection {
   margin-top: var(--spacing-3xl);
   padding-top: var(--spacing-2xl);
   border-top: 1px solid var(--color-border);
 }
 
-.brothersTitle {
+.teamTitle {
   font-size: var(--font-size-2xl);
   font-weight: var(--font-weight-bold);
   color: var(--color-text);
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
 }
 
-.brothersText {
-  font-size: var(--font-size-lg);
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-2xl);
+  text-align: left;
+}
+
+.teamMember {
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.teamMember:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-xl);
+}
+
+.memberImageWrapper {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.memberImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform var(--transition-base);
+}
+
+.teamMember:hover .memberImage {
+  transform: scale(1.03);
+}
+
+.memberInfo {
+  padding: var(--spacing-xl);
+}
+
+.memberName {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.memberRole {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--spacing-md);
+}
+
+.memberBio {
+  font-size: var(--font-size-base);
   color: var(--color-text-light);
+  line-height: 1.7;
+  margin-bottom: var(--spacing-md);
+}
+
+.memberBio:last-child {
+  margin-bottom: 0;
+}
+
+.teamPhilosophy {
+  margin-top: var(--spacing-2xl);
+  padding: var(--spacing-xl);
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  border-left: 4px solid var(--color-primary);
+  text-align: left;
+}
+
+.teamPhilosophy p {
+  font-size: var(--font-size-lg);
+  color: var(--color-text);
   line-height: 1.8;
-  max-width: 700px;
-  margin: 0 auto;
+  margin: 0;
+  font-style: italic;
 }
 
 /* Tablet */
@@ -78,11 +156,24 @@
     font-size: var(--font-size-base);
   }
 
-  .brothersTitle {
+  .teamTitle {
     font-size: var(--font-size-xl);
   }
 
-  .brothersText {
+  .teamGrid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  .memberInfo {
+    padding: var(--spacing-lg);
+  }
+
+  .memberName {
+    font-size: var(--font-size-lg);
+  }
+
+  .teamPhilosophy p {
     font-size: var(--font-size-base);
   }
 }
@@ -98,8 +189,20 @@
     line-height: 1.7;
   }
 
-  .brothersSection {
+  .teamSection {
     margin-top: var(--spacing-2xl);
     padding-top: var(--spacing-xl);
+  }
+
+  .memberInfo {
+    padding: var(--spacing-md);
+  }
+
+  .memberBio {
+    font-size: var(--font-size-sm);
+  }
+
+  .teamPhilosophy {
+    padding: var(--spacing-md);
   }
 }

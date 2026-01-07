@@ -1,0 +1,137 @@
+.reviews {
+  margin-top: var(--spacing-3xl);
+  padding-top: var(--spacing-2xl);
+  border-top: 1px solid var(--color-border);
+}
+
+/* When scroll is locked to carousel */
+.locked {
+  /* Could add visual indicator here if desired */
+}
+
+.reviewsTitle {
+  text-align: center;
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  margin-bottom: var(--spacing-sm);
+}
+
+.scrollHint {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.carouselWrapper {
+  margin: 0 calc(-1 * var(--spacing-md));
+  padding: 0 var(--spacing-md);
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) var(--color-border);
+  -webkit-overflow-scrolling: touch;
+}
+
+.carouselWrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.carouselWrapper::-webkit-scrollbar-track {
+  background: var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.carouselWrapper::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: var(--radius-md);
+}
+
+.carousel {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm) 0 var(--spacing-lg);
+}
+
+/* Column for stacked pair of reviews */
+.stackedColumn {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  flex-shrink: 0;
+}
+
+/* Column for tall single review */
+.singleColumn {
+  flex-shrink: 0;
+}
+
+.reviewCard {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  background: var(--color-white);
+}
+
+.reviewCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-xl);
+}
+
+.reviewImage {
+  display: block;
+  width: 520px;
+  height: auto;
+}
+
+.locationBadge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background: #2563eb;
+  color: var(--color-white);
+  font-size: 10px;
+  font-weight: var(--font-weight-semibold);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .reviews {
+    margin-top: var(--spacing-2xl);
+    padding-top: var(--spacing-xl);
+  }
+
+  .reviewsTitle {
+    font-size: var(--font-size-xl);
+  }
+
+  .reviewImage {
+    width: 420px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .reviews {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+  }
+
+  .reviewImage {
+    width: 340px;
+  }
+
+  .carousel {
+    gap: var(--spacing-sm);
+  }
+
+  .stackedColumn {
+    gap: var(--spacing-sm);
+  }
+}

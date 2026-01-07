@@ -33,6 +33,14 @@
   color: var(--color-primary);
 }
 
+.externalIcon {
+  width: 12px;
+  height: 12px;
+  margin-left: 4px;
+  vertical-align: middle;
+  opacity: 0.6;
+}
+
 /* Mobile hamburger button */
 .hamburgerButton {
   display: none;

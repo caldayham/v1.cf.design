@@ -194,11 +194,11 @@ export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
               {/* Step 4: Project Description */}
               <div className={getStepClass(4)}>
                 <div className={styles.slideContent}>
-                  <h3 className={styles.slideQuestion}>Tell us a little more about your project <span className={styles.optionalLabel}>(optional)</span></h3>
+                  <h3 className={styles.slideQuestion}>Additional notes?<br/> <span className={styles.optionalLabel}>(optional)</span></h3>
 
                   <textarea
                     className={styles.textarea}
-                    placeholder="Looking for a full outdoor redesign, maybe a pool as well"
+                    placeholder="e.g. interested in an outdoor bbq and patio area for our back yard, possibly deck"
                     value={formData.projectDescription}
                     onChange={(e) => setFormData({ ...formData, projectDescription: e.target.value })}
                     rows={5}
@@ -224,7 +224,7 @@ export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
                     <input
                       type="tel"
                       className={styles.input}
-                      placeholder="(555) 123-4567"
+                      placeholder="(650) 123-4567"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     />
