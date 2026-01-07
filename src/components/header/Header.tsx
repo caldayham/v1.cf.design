@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import styles from './Header.module.css';
 import CTAButton from '@/components/cta_button/CTAButton';
 
@@ -8,14 +8,13 @@ interface NavLink {
   id?: string;
   href?: string;
   label: string;
-  external?: boolean;
 }
 
 const navLinks: NavLink[] = [
   { id: 'purpose', label: 'Purpose' },
   { id: 'process', label: 'Process' },
   { id: 'portfolio', label: 'Portfolio' },
-  { href: '/blog', label: 'Blog', external: true },
+  { href: '/blog', label: 'Blog' },
 ];
 
 interface HeaderProps {
@@ -25,9 +24,41 @@ interface HeaderProps {
 export default function Header({ hideCtaButton = false }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showCta, setShowCta] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
 
   const handleCtaVisibilityChange = useCallback((visible: boolean) => {
     setShowCta(visible);
+  }, []);
+
+  // Track which section is currently in view
+  useEffect(() => {
+    const sectionIds = navLinks.filter(link => link.id).map(link => link.id!);
+    const observers: IntersectionObserver[] = [];
+
+    sectionIds.forEach(id => {
+      const element = document.getElementById(id);
+      if (element) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                setActiveSection(id);
+              }
+            });
+          },
+          {
+            rootMargin: '-20% 0px -70% 0px', // Trigger when section is in upper portion of viewport
+            threshold: 0
+          }
+        );
+        observer.observe(element);
+        observers.push(observer);
+      }
+    });
+
+    return () => {
+      observers.forEach(observer => observer.disconnect());
+    };
   }, []);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
@@ -48,34 +79,19 @@ export default function Header({ hideCtaButton = false }: HeaderProps) {
       <header className={styles.header}>
         <nav className={styles.nav}>
           {navLinks.map((link) => (
-            link.external ? (
+            link.href ? (
               <a
                 key={link.href}
                 href={link.href}
                 className={styles.navLink}
-                target="_blank"
-                rel="noopener noreferrer"
               >
                 {link.label}
-                <svg
-                  className={styles.externalIcon}
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                  <polyline points="15 3 21 3 21 9" />
-                  <line x1="10" y1="14" x2="21" y2="3" />
-                </svg>
               </a>
             ) : (
               <a
                 key={link.id}
                 href={`#${link.id}`}
-                className={styles.navLink}
+                className={`${styles.navLink} ${activeSection === link.id ? styles.navLinkActive : ''}`}
                 onClick={(e) => handleNavClick(e, link.id!)}
               >
                 {link.label}
@@ -105,35 +121,20 @@ export default function Header({ hideCtaButton = false }: HeaderProps) {
       <div className={`${styles.mobileOverlay} ${isMenuOpen ? styles.mobileOverlayOpen : ''}`}>
         <nav className={styles.mobileNav}>
           {navLinks.map((link) => (
-            link.external ? (
+            link.href ? (
               <a
                 key={link.href}
                 href={link.href}
                 className={styles.mobileNavLink}
-                target="_blank"
-                rel="noopener noreferrer"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {link.label}
-                <svg
-                  className={styles.externalIcon}
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                  <polyline points="15 3 21 3 21 9" />
-                  <line x1="10" y1="14" x2="21" y2="3" />
-                </svg>
               </a>
             ) : (
               <a
                 key={link.id}
                 href={`#${link.id}`}
-                className={styles.mobileNavLink}
+                className={`${styles.mobileNavLink} ${activeSection === link.id ? styles.mobileNavLinkActive : ''}`}
                 onClick={(e) => handleNavClick(e, link.id!)}
               >
                 {link.label}

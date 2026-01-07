@@ -1,6 +1,3 @@
-'use client';
-
-import { useRef, useEffect, useState } from 'react';
 import styles from './Reviews.module.css';
 
 interface Review {
@@ -15,7 +12,7 @@ interface Review {
 const reviews: Review[] = [
   { src: '/imgs/review-imgs/Kerstin-patio-review-2.jpg', alt: 'Review from Kerstin about patio', location: 'Palo Alto', height: 1286, width: 1136 },
   { src: '/imgs/review-imgs/marsha-excluder-review.jpg', alt: 'Review from Marsha about excluder', location: 'Palo Alto', height: 992, width: 1126 },
-  { src: '/imgs/review-imgs/sara-bike-area-review.jpg', alt: 'Review from Sara about bike area', location: 'Palo Alto', height: 788, width: 1144 },
+  { src: '/imgs/review-imgs/sara-bike-area-review.jpg', alt: 'Review from Sara about bike area', location: 'Menlo Park', height: 788, width: 1144 },
   { src: '/imgs/review-imgs/yuet-fence-review.jpg', alt: 'Review from Yuet about fence', location: 'Palo Alto', height: 782, width: 1116 },
   { src: '/imgs/review-imgs/Kathy-projects-review.jpg', alt: 'Review from Kathy about projects', location: 'Palo Alto', height: 712, width: 1134 },
   { src: '/imgs/review-imgs/kerstin-patio-review-1.jpg', alt: 'Review from Kerstin about patio', location: 'Palo Alto', height: 656, width: 1126 },
@@ -105,69 +102,15 @@ function ReviewCard({ review }: { review: Review }) {
 
 export default function Reviews() {
   const columns = organizeIntoColumns(reviews);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const [isLocked, setIsLocked] = useState(false);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    const carousel = carouselRef.current;
-    if (!section || !carousel) return;
-
-    const handleWheel = (e: WheelEvent) => {
-      // Only intercept vertical scroll
-      if (Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
-
-      const sectionRect = section.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
-
-      // Check if the carousel section is in the "lock zone"
-      // Lock when top of section is at or above 100px from viewport top
-      // and bottom of section is still below the viewport
-      const topThreshold = 100;
-      const isInLockZone = sectionRect.top <= topThreshold && sectionRect.bottom > viewportHeight;
-
-      const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
-      const currentScrollLeft = carousel.scrollLeft;
-      const atStart = currentScrollLeft <= 0;
-      const atEnd = currentScrollLeft >= maxScrollLeft - 1;
-
-      // If we're in the lock zone and carousel can still scroll
-      if (isInLockZone) {
-        if (e.deltaY > 0 && !atEnd) {
-          // Scrolling down, carousel not at end - scroll carousel right
-          e.preventDefault();
-          carousel.scrollLeft += e.deltaY * 1.5;
-          setIsLocked(true);
-        } else if (e.deltaY < 0 && !atStart) {
-          // Scrolling up, carousel not at start - scroll carousel left
-          e.preventDefault();
-          carousel.scrollLeft += e.deltaY * 1.5;
-          setIsLocked(true);
-        } else {
-          // At carousel boundary, allow normal scroll
-          setIsLocked(false);
-        }
-      } else {
-        setIsLocked(false);
-      }
-    };
-
-    // Listen on window to capture scroll anywhere on page
-    window.addEventListener('wheel', handleWheel, { passive: false });
-
-    return () => {
-      window.removeEventListener('wheel', handleWheel);
-    };
-  }, []);
 
   return (
-    <div className={`${styles.reviews} ${isLocked ? styles.locked : ''}`} ref={sectionRef}>
+    <div className={styles.reviews}>
       <h3 className={styles.reviewsTitle}>Client Reviews</h3>
       <p className={styles.scrollHint}>Scroll to explore reviews →</p>
 
-      <div className={styles.carouselWrapper} ref={carouselRef}>
+      <div className={styles.carouselWrapper}>
         <div className={styles.carousel}>
+          <div className={styles.carouselSpacer} />
           {columns.map((column, index) => (
             Array.isArray(column) ? (
               <div key={index} className={styles.stackedColumn}>
@@ -180,6 +123,7 @@ export default function Reviews() {
               </div>
             )
           ))}
+          <div className={styles.carouselSpacer} />
         </div>
       </div>
     </div>

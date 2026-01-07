@@ -11,6 +11,7 @@ export default function Projects() {
 
       <div className={styles.carouselWrapper}>
         <div className={styles.carousel}>
+          <div className={styles.carouselSpacer} />
           {projects.map((project) => (
             <div key={project.slug} className={styles.portfolioCard}>
               <div className={styles.portfolioImageWrapper}>
@@ -37,6 +38,7 @@ export default function Projects() {
               </div>
             </div>
           ))}
+          <div className={styles.carouselSpacer} />
         </div>
       </div>
     </div>
