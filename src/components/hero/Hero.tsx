@@ -6,7 +6,7 @@ export default function Hero() {
     <section className={styles.hero} id="hero">
       <div className={styles.heroBackgroundLogoWrapper}>
         <Image
-          src="/baystone-text-logo.png"
+          src="/cf-text-logo.png"
           alt=""
           fill
           sizes="150vw"

@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Blog - Baystone Landscape Design',
-  description: 'Landscape design tips, outdoor living trends, and expert advice from Baystone.',
+  title: 'Blog - cf.design Landscape Design',
+  description: 'Landscape design tips, outdoor living trends, and expert advice from cf.design.',
 };
 
 export default function BlogLayout({

@@ -31,7 +31,7 @@ function getPostBySlug(slug: string): PostData | null {
     title: data.title || '',
     excerpt: data.excerpt || '',
     date: data.date || '',
-    author: data.author || 'Baystone Team',
+    author: data.author || 'cf.design Team',
     image: data.image || '',
     content,
   };
@@ -65,12 +65,12 @@ export async function generateMetadata({
 
   if (!post) {
     return {
-      title: 'Post Not Found - Baystone',
+      title: 'Post Not Found - cf.design',
     };
   }
 
   return {
-    title: `${post.title} - Baystone Blog`,
+    title: `${post.title} - cf.design Blog`,
     description: post.excerpt,
     openGraph: {
       title: post.title,

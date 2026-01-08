@@ -11,10 +11,10 @@ const libreCaslon = Libre_Caslon_Text({
 });
 
 export const metadata: Metadata = {
-  title: 'Quality Landscapes - Baystone',
-  description: 'Transform your outdoor space with Baystone. Award-winning landscape design that elevates your property\'s beauty and value. Book your free consultation today.',
+  title: 'Quality Landscapes - cf.design',
+  description: 'Transform your outdoor space with cf.design. Award-winning landscape design that elevates your property\'s beauty and value. Book your free consultation today.',
   icons: {
-    icon: '/baystone-text-icon.png',
+    icon: '/cf-icon.png',
   },
 };
 

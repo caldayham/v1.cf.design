@@ -37,6 +37,7 @@
   overflow-x: auto;
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--spacing-xl);
   scrollbar-width: thin;
   scrollbar-color: var(--color-primary) var(--color-border);
   -webkit-overflow-scrolling: touch;
@@ -58,13 +59,21 @@
 
 .carousel {
   display: flex;
+  align-items: flex-start;
   gap: var(--spacing-lg);
-  padding: var(--spacing-sm) 0 var(--spacing-lg);
+  padding-block: var(--spacing-sm) var(--spacing-lg);
+  width: max-content;
+}
+
+.cap {
+  /* Cap + gap = total edge spacing. Gap is --spacing-lg (32px), so cap is --spacing-sm (16px) for 48px total */
+  flex: 0 0 var(--spacing-sm);
+  scroll-snap-align: none;
 }
 
 
 .portfolioCard {
-  flex: 0 0 320px;
+  flex: 0 0 380px;
   background: var(--color-white);
   border-radius: var(--radius-xl);
   overflow: hidden;
@@ -153,7 +162,7 @@
   }
 
   .portfolioCard {
-    flex: 0 0 280px;
+    flex: 0 0 320px;
   }
 
   .portfolioName {
@@ -168,7 +177,7 @@
   }
 
   .portfolioCard {
-    flex: 0 0 260px;
+    flex: 0 0 280px;
   }
 
   .portfolioInfo {

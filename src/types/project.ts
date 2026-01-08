@@ -1,5 +1,5 @@
 /**
- * Project Types for Baystone Landscape Design
+ * Project Types for cf.design Landscape Design
  *
  * These types define the structure for landscape projects,
  * separating public-facing data from internal business data.

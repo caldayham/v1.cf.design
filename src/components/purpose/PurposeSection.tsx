@@ -11,7 +11,7 @@ export default function PurposeSection() {
           and managing the build can mean the difference between a seamless transformation and a drawn-out headache.
         </p>
         <p className={`${styles.aboutText} ${styles.aboutHighlight}`}>
-          <strong>Baystone exists to eliminate both risks.</strong>
+          <strong>cf.design exists to eliminate both risks.</strong>
           <br />
           We turn feelings and vibes into precise plans, then guide you through contractor selection
           and negotiation—so you get the outdoor space you envisioned, delivered properly, at a fair price.
@@ -19,7 +19,7 @@ export default function PurposeSection() {
         <div className={styles.videoContainer}>
           <iframe
             src="https://www.youtube.com/embed/QG-UfcS7l3k?start=13"
-            title="Baystone Landscape Design"
+            title="cf.design Landscape Design"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />

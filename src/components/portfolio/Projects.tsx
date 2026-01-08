@@ -11,6 +11,7 @@ export default function Projects() {
 
       <div className={styles.carouselWrapper}>
         <div className={styles.carousel}>
+          <div className={styles.cap} aria-hidden="true" />
           {projects.map((project) => (
             <div key={project.slug} className={styles.portfolioCard}>
               <div className={styles.portfolioImageWrapper}>
@@ -37,6 +38,7 @@ export default function Projects() {
               </div>
             </div>
           ))}
+          <div className={styles.cap} aria-hidden="true" />
         </div>
       </div>
     </div>

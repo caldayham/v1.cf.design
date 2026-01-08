@@ -17,6 +17,8 @@ const situationOptions = [
 
 const yearsOwnedOptions = ['<1 year', '1-5 years', '5-20 years', '20+ years'];
 
+type SubmissionState = 'idle' | 'submitting' | 'success' | 'error';
+
 export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -27,6 +29,8 @@ export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
     name: '',
     phone: '',
   });
+  const [submissionState, setSubmissionState] = useState<SubmissionState>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
   const formRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -85,10 +89,37 @@ export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
     }
   };
 
-  const handleSubmit = () => {
-    if (formData.name && formData.phone) {
-      alert('Thank you! We will contact you shortly.');
+  const handleSubmit = async () => {
+    if (!formData.name || !formData.phone) return;
+
+    setSubmissionState('submitting');
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('/api/submit-intake', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        setSubmissionState('success');
+      } else {
+        setSubmissionState('error');
+        setErrorMessage(result.error || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmissionState('error');
+      setErrorMessage('Network error. Please check your connection and try again.');
     }
+  };
+
+  const handleRetry = () => {
+    setSubmissionState('idle');
+    setErrorMessage('');
   };
 
   const getStepClass = (step: number) => {
@@ -108,12 +139,31 @@ export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
     }
   };
 
+  // Success state - show thank you message
+  if (submissionState === 'success') {
+    return (
+      <section className={styles.formSection} id="contact" ref={formRef}>
+        <div className={styles.formContainer}>
+          <div className={styles.formCard}>
+            <div className={styles.successMessage}>
+              <h3 className={styles.formTitle}>Thank you, {formData.name}!</h3>
+              <p className={styles.privacyNote}>
+                We have received your information. Cal or Fynn will reach out
+                via text message within 24 hours to schedule your consultation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className={styles.formSection} id="contact" ref={formRef}>
       <div className={styles.formContainer}>
         <div className={styles.formHeader}>
           <h2 className={styles.formTitle}>Get Started</h2>
-          <p className={styles.formSubtitle}>A couple questions to see if we're the right fit!</p>
+          <p className={styles.formSubtitle}>A couple questions to see if we&apos;re the right fit!</p>
         </div>
 
         <div className={styles.formCard}>
@@ -220,6 +270,7 @@ export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
                       placeholder="Your name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      disabled={submissionState === 'submitting'}
                     />
                     <input
                       type="tel"
@@ -227,10 +278,16 @@ export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
                       placeholder="(650) 123-4567"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      disabled={submissionState === 'submitting'}
                     />
                   </div>
+
+                  {submissionState === 'error' && (
+                    <p className={styles.errorMessage}>{errorMessage}</p>
+                  )}
+
                   <p className={styles.privacyNote}>
-                    We only use your information to contact you directly. 
+                    We only use your information to contact you directly.
                     <br/>We never share your information.
                   </p>
                 </div>
@@ -240,7 +297,7 @@ export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
             {/* Fixed Navigation Footer */}
             <div className={styles.formFooter}>
               <div className={styles.navigationButtons}>
-                {currentStep > 1 && (
+                {currentStep > 1 && submissionState !== 'submitting' && (
                   <button type="button" className={styles.backButton} onClick={handleBack}>
                     Back
                   </button>
@@ -254,14 +311,22 @@ export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
                   >
                     Next
                   </button>
+                ) : submissionState === 'error' ? (
+                  <button
+                    type="button"
+                    className={styles.submitButton}
+                    onClick={handleRetry}
+                  >
+                    Try Again
+                  </button>
                 ) : (
                   <button
                     type="button"
                     className={styles.submitButton}
                     onClick={handleSubmit}
-                    disabled={!canProceed()}
+                    disabled={!canProceed() || submissionState === 'submitting'}
                   >
-                    Submit
+                    {submissionState === 'submitting' ? 'Submitting...' : 'Submit'}
                   </button>
                 )}
               </div>

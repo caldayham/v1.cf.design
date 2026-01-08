@@ -34,7 +34,7 @@ function getAllPosts(): PostMeta[] {
         title: data.title || '',
         excerpt: data.excerpt || '',
         date: data.date || '',
-        author: data.author || 'Baystone Team',
+        author: data.author || 'cf.design Team',
         image: data.image || '',
       };
     })
@@ -65,7 +65,7 @@ export default function BlogPage() {
         <header className={styles.blogHeader}>
           <h1 className={styles.blogTitle}>Latest Articles</h1>
           <p className={styles.blogSubtitle}>
-            Landscape design tips, outdoor living trends, and expert advice from Baystone
+            Landscape design tips, outdoor living trends, and expert advice from cf.design
           </p>
         </header>
 

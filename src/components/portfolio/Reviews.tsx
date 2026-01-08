@@ -110,6 +110,7 @@ export default function Reviews() {
 
       <div className={styles.carouselWrapper}>
         <div className={styles.carousel}>
+          <div className={styles.cap} aria-hidden="true" />
           {columns.map((column, index) => (
             Array.isArray(column) ? (
               <div key={index} className={styles.stackedColumn}>
@@ -122,6 +123,7 @@ export default function Reviews() {
               </div>
             )
           ))}
+          <div className={styles.cap} aria-hidden="true" />
         </div>
       </div>
     </div>
