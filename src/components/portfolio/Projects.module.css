@@ -62,11 +62,6 @@
   padding: var(--spacing-sm) 0 var(--spacing-lg);
 }
 
-/* Internal spacer for padding that scrolls with content */
-.carouselSpacer {
-  flex-shrink: 0;
-  width: var(--spacing-md);
-}
 
 .portfolioCard {
   flex: 0 0 320px;
@@ -182,10 +177,6 @@
 
   .scopeTag {
     font-size: 10px;
-  }
-
-  .carouselSpacer {
-    width: var(--spacing-md);
   }
 
   .carousel {

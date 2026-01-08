@@ -43,20 +43,13 @@ export default function PurposeSection() {
                 <h4 className={styles.memberName}>Cal</h4>
                 <p className={styles.memberRole}>Design & Project Management</p>
                 <p className={styles.memberBio}>
-                  24 years old, Sc.B. in Cell Biology from UMN, raised in Palo Alto. Cal is driven by systems thinking,
-                  functional design, and precise craftsmanship. He thrives on building genuine connections with clients
-                  and bringing their visions to life.
+                  Former Design Consultant at System Pavers, specializing in hardscaping, lighting, drainage, and outdoor structures.
                 </p>
                 <p className={styles.memberBio}>
-                  In 2024–2025, Cal worked as a Design Consultant at System Pavers, where he was immersed in hardscaping,
-                  lighting, drainage, decking, pergolas, and outdoor kitchens—building relationships with quality local
-                  contractors and material suppliers along the way. He was drawn to landscaping for its faster pace than
-                  home construction, the massive breadth of design possibilities, and the opportunity to work outdoors
-                  meeting great people.
+                  Built relationships with quality local contractors and suppliers throughout the Bay Area.
                 </p>
                 <p className={styles.memberBio}>
-                  Over the summer, he and Fynn launched a local carpentry business, serving 40+ neighbors with fences,
-                  garden boxes, and small decks—getting their hands dirty and mastering the design-to-build process firsthand.
+                  Launched a carpentry business with Fynn, serving 40+ neighbors with fences, garden boxes, and decks.
                 </p>
               </div>
             </div>
@@ -74,27 +67,35 @@ export default function PurposeSection() {
                 <h4 className={styles.memberName}>Fynn</h4>
                 <p className={styles.memberRole}>3D Design & Engineering</p>
                 <p className={styles.memberBio}>
-                  20 years old, studying Mechanical Engineering. Like Cal, Fynn grew up in a workshop and developed
-                  an early passion for building things that work. He specializes in CAD design and 3D printing,
-                  taking on much of the team&apos;s 3D modeling work.
+                  Mechanical Engineering student specializing in CAD and 3D modeling.
                 </p>
                 <p className={styles.memberBio}>
-                  Fynn brings a highly functional, pragmatic viewpoint to every design session—ensuring that creative
-                  ideas translate into buildable, practical solutions. His engineering mindset helps the team anticipate
-                  challenges before they become problems on site.
+                  Ensures every design is buildable and practical before it leaves the drawing board.
+                </p>
+                <p className={styles.memberBio}>
+                  Hands-on experience from a summer building fences, garden boxes, and decks for local clients.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Philosophy */}
-          <div className={styles.teamPhilosophy}>
-            <p>
-              Cal and Fynn don&apos;t expect you to sign over the future of your Bay Area home&apos;s outdoor aesthetics on a whim.
-              This site exists to communicate two things: the brothers care deeply about every project they engage in,
-              and they have lived experience in design and contractor management that makes a free consultation genuinely
-              valuable for anyone looking to revamp their space.
-            </p>
+          {/* Philosophy Callout */}
+          <div className={styles.philosophyCallout}>
+            <div className={styles.philosophyImage}>
+              <img
+                src="/imgs/cal-fynn-construction/cal-fynn-robin-deck.JPG"
+                alt="Cal and Fynn on a completed deck project"
+              />
+            </div>
+            <div className={styles.philosophyContent}>
+              <h4 className={styles.philosophyHeadline}>No pressure. Just expertise.</h4>
+              <p className={styles.philosophyText}>
+                We don&apos;t expect you to sign over the future of your home&apos;s outdoor space on a whim.
+              </p>
+              <p className={styles.philosophyText}>
+                We care deeply about every project we take on, and our hands-on experience in design and contractor management makes a free consultation genuinely valuable for anyone looking to transform their space.
+              </p>
+            </div>
           </div>
         </div>
       </div>

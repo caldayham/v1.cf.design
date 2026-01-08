@@ -53,11 +53,6 @@
   padding: var(--spacing-sm) 0 var(--spacing-lg);
 }
 
-/* Internal spacer for padding that scrolls with content */
-.carouselSpacer {
-  flex-shrink: 0;
-  width: var(--spacing-md);
-}
 
 /* Column for stacked pair of reviews */
 .stackedColumn {
@@ -137,9 +132,5 @@
 
   .stackedColumn {
     gap: var(--spacing-sm);
-  }
-
-  .carouselSpacer {
-    width: var(--spacing-md);
   }
 }

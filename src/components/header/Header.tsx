@@ -84,6 +84,8 @@ export default function Header({ hideCtaButton = false }: HeaderProps) {
                 key={link.href}
                 href={link.href}
                 className={styles.navLink}
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 {link.label}
               </a>
@@ -126,6 +128,8 @@ export default function Header({ hideCtaButton = false }: HeaderProps) {
                 key={link.href}
                 href={link.href}
                 className={styles.mobileNavLink}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {link.label}

@@ -110,7 +110,6 @@ export default function Reviews() {
 
       <div className={styles.carouselWrapper}>
         <div className={styles.carousel}>
-          <div className={styles.carouselSpacer} />
           {columns.map((column, index) => (
             Array.isArray(column) ? (
               <div key={index} className={styles.stackedColumn}>
@@ -123,7 +122,6 @@ export default function Reviews() {
               </div>
             )
           ))}
-          <div className={styles.carouselSpacer} />
         </div>
       </div>
     </div>
