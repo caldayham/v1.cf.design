@@ -149,6 +149,12 @@ export interface PublicProject {
   completionDate: string;
   status: 'completed' | 'in-progress';
 
+  // Project type - determines display format
+  projectType: 'full-property' | 'partial';
+
+  // Description - detailed narrative about the project
+  description?: string;
+
   // Scope (simplified for display)
   scope: string[];
   highlights: string[];
@@ -156,6 +162,8 @@ export interface PublicProject {
   // Media
   featuredImage: string;
   images?: string[];
+  beforeImage?: string;
+  afterImage?: string;
 
   // Optional testimonial
   hasTestimonial?: boolean;
@@ -169,7 +177,8 @@ export function toPublicProject(
   internal: InternalProject,
   displayTitle: string,
   highlights: string[],
-  images: { featured: string; gallery?: string[] }
+  images: { featured: string; gallery?: string[]; before?: string; after?: string },
+  projectType: 'full-property' | 'partial' = 'partial'
 ): PublicProject {
   return {
     slug: displayTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
@@ -179,10 +188,13 @@ export function toPublicProject(
     status: internal.status === 'completed' || internal.status === 'testimonial'
       ? 'completed'
       : 'in-progress',
+    projectType,
     scope: internal.scope,
     highlights,
     featuredImage: images.featured,
     images: images.gallery,
+    beforeImage: images.before,
+    afterImage: images.after,
     hasTestimonial: internal.status === 'testimonial',
   };
 }

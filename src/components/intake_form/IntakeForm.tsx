@@ -11,8 +11,8 @@ const TOTAL_STEPS = 5;
 
 const situationOptions = [
   'Just starting the process',
-  'Have talked to designers/contractors, looking for additional input',
-  'Unsatisfied with received designs or installations, looking for better direction',
+  'Meeting with designers / contractors',
+  'Unsatisfied with ongoing or compleated work',
 ];
 
 const yearsOwnedOptions = ['<1 year', '1-5 years', '5-20 years', '20+ years'];
@@ -204,7 +204,7 @@ export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
               {/* Step 2: Current Situation */}
               <div className={getStepClass(2)}>
                 <div className={styles.slideContent}>
-                  <h3 className={styles.slideQuestion}>Which option best describes your current situation?</h3>
+                  <h3 className={styles.slideQuestion}>Which best fits your current situation?</h3>
 
                   <div className={styles.optionsList}>
                     {situationOptions.map((option) => (

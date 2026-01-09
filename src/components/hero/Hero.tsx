@@ -15,7 +15,10 @@ export default function Hero() {
         />
       </div>
       <div className={styles.heroContainer}>
-        <h1 className={styles.heroTitle}>Quality Landscape Design</h1>
+        <div className={styles.heroTitleWrapper}>
+          <h1 className={styles.heroTitle}>Quality Landscape Design</h1>
+          <p className={styles.heroSubtitle}>San Mateo & Santa Clara County</p>
+        </div>
         <div className={styles.heroCtaWrapper}>
           <p className={styles.aboutText}>
             Reimagining your outdoor space should be exciting, not stressful.

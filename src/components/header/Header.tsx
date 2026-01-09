@@ -35,6 +35,26 @@ export default function Header({ hideCtaButton = false }: HeaderProps) {
     const sectionIds = navLinks.filter(link => link.id).map(link => link.id!);
     const observers: IntersectionObserver[] = [];
 
+    // Also observe hero section to clear active state when at top
+    const heroElement = document.getElementById('hero');
+    if (heroElement) {
+      const heroObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              setActiveSection(null);
+            }
+          });
+        },
+        {
+          rootMargin: '-20% 0px -70% 0px',
+          threshold: 0
+        }
+      );
+      heroObserver.observe(heroElement);
+      observers.push(heroObserver);
+    }
+
     sectionIds.forEach(id => {
       const element = document.getElementById(id);
       if (element) {

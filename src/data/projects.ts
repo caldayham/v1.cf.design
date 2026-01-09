@@ -552,9 +552,13 @@ export const publicProjects: PublicProject[] = [
     location: 'Fremont, CA',
     completionDate: 'February 2025',
     status: 'completed',
+    projectType: 'partial',
+    description: '',
     scope: ['Pavers', 'Synthetic turf', 'Rock prep', 'Soil removal'],
     highlights: ['Full backyard transformation', 'Low-maintenance turf'],
     featuredImage: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+    beforeImage: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+    afterImage: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
   },
   // Job #2 - Half Moon Bay
   {
@@ -563,9 +567,13 @@ export const publicProjects: PublicProject[] = [
     location: 'Half Moon Bay, CA',
     completionDate: 'February 2025',
     status: 'completed',
+    projectType: 'partial',
+    description: '',
     scope: ['Full property pavers', 'Retaining walls', 'Landscape lighting', 'RV/Boat parking pad', 'Bullnose steps'],
     highlights: ['Large-scale installation', 'Custom RV parking solution', 'Integrated lighting'],
     featuredImage: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80',
+    beforeImage: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80',
+    afterImage: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80',
   },
   // Job #3 - San Carlos
   {
@@ -574,21 +582,33 @@ export const publicProjects: PublicProject[] = [
     location: 'San Carlos, CA',
     completionDate: 'December 2024',
     status: 'completed',
+    projectType: 'partial',
+    description: '',
     scope: ['Pavers', 'Bullnose steps'],
     highlights: ['Quick installation', 'Enhanced curb appeal'],
     featuredImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
+    beforeImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
+    afterImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
   },
-  // Job #4 - San Mateo (Lake Street)
+  // Job #4 - San Mateo (Lake Street) - FULL PROPERTY
   {
     slug: 'lake-street-transformation',
     title: 'Lake Street Transformation',
     location: 'San Mateo, CA',
     completionDate: 'February 2025',
     status: 'completed',
+    projectType: 'full-property',
+    description: '',
     scope: ['Driveway pavers', 'Backyard patio', 'Synthetic turf', 'Retaining walls', 'Lighting', 'Dock access'],
     highlights: ['Complete property makeover', '1,840 SF turf', '12 integrated lights'],
     featuredImage: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80',
+    images: [
+      'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80',
+      'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80',
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
+    ],
     hasTestimonial: true,
+    testimonialQuote: '',
   },
   // Job #5 - San Bruno
   {
@@ -597,9 +617,13 @@ export const publicProjects: PublicProject[] = [
     location: 'San Bruno, CA',
     completionDate: 'January 2025',
     status: 'completed',
+    projectType: 'partial',
+    description: '',
     scope: ['Pavers', 'Bullnose steps', 'Drainage'],
     highlights: ['Improved drainage', 'Clean modern design'],
     featuredImage: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80',
+    beforeImage: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80',
+    afterImage: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80',
   },
   // Job #6 - Fremont (Cottage Rose)
   {
@@ -608,9 +632,13 @@ export const publicProjects: PublicProject[] = [
     location: 'Fremont, CA',
     completionDate: 'January 2025',
     status: 'completed',
+    projectType: 'partial',
+    description: '',
     scope: ['Pavers'],
     highlights: ['Flawless execution', 'Quick turnaround'],
     featuredImage: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80',
+    beforeImage: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80',
+    afterImage: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80',
   },
   // Job #7 - Palo Alto
   {
@@ -619,9 +647,13 @@ export const publicProjects: PublicProject[] = [
     location: 'Palo Alto, CA',
     completionDate: 'February 2025',
     status: 'completed',
+    projectType: 'partial',
+    description: '',
     scope: ['Paver installation'],
     highlights: ['Same-day consultation to sale', 'Flawless execution'],
     featuredImage: 'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=800&q=80',
+    beforeImage: 'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=800&q=80',
+    afterImage: 'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=800&q=80',
   },
   // Job #8 - Foster City
   {
@@ -630,9 +662,13 @@ export const publicProjects: PublicProject[] = [
     location: 'Foster City, CA',
     completionDate: 'April 2025',
     status: 'completed',
+    projectType: 'partial',
+    description: '',
     scope: ['Full property pavers', 'Curbing', 'Drainage', 'Landscape lighting'],
     highlights: ['Large waterfront project', 'Complex drainage solutions'],
     featuredImage: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80',
+    beforeImage: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80',
+    afterImage: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80',
   },
   // Job #9 - Hayward
   {
@@ -641,9 +677,13 @@ export const publicProjects: PublicProject[] = [
     location: 'Hayward, CA',
     completionDate: 'March 2025',
     status: 'completed',
+    projectType: 'partial',
+    description: '',
     scope: ['Paver patio', 'Rock preparation', 'Pergola footings'],
     highlights: ['Pergola-ready foundation', '10-day completion'],
     featuredImage: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=80',
+    beforeImage: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=80',
+    afterImage: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=80',
   },
   // Job #10 - Foster City (Greenwich)
   {
@@ -652,9 +692,13 @@ export const publicProjects: PublicProject[] = [
     location: 'Foster City, CA',
     completionDate: 'April 2025',
     status: 'completed',
+    projectType: 'partial',
+    description: '',
     scope: ['Pavers', 'Drainage'],
     highlights: ['Drainage solutions', 'Clean finish'],
     featuredImage: 'https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?w=800&q=80',
+    beforeImage: 'https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?w=800&q=80',
+    afterImage: 'https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?w=800&q=80',
   },
   // Job #11 - Santa Clara
   {
@@ -663,9 +707,13 @@ export const publicProjects: PublicProject[] = [
     location: 'Santa Clara, CA',
     completionDate: 'April 2025',
     status: 'completed',
+    projectType: 'partial',
+    description: '',
     scope: ['Pavers'],
     highlights: ['Sleek patio design', 'Quick turnaround'],
     featuredImage: 'https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=800&q=80',
+    beforeImage: 'https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=800&q=80',
+    afterImage: 'https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=800&q=80',
   },
   // Job #12 - Sunnyvale
   {
@@ -674,9 +722,13 @@ export const publicProjects: PublicProject[] = [
     location: 'Sunnyvale, CA',
     completionDate: 'April 2025',
     status: 'completed',
+    projectType: 'partial',
+    description: '',
     scope: ['Pavers', 'Synthetic turf'],
     highlights: ['Low-maintenance turf', 'Modern design'],
     featuredImage: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80',
+    beforeImage: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80',
+    afterImage: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80',
   },
 ];
 
