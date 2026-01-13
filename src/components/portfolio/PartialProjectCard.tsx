@@ -18,6 +18,10 @@ export default function PartialProjectCard({ project }: PartialProjectCardProps)
         beforeImage={project.beforeImage}
         afterImage={project.afterImage}
         alt={project.title}
+        beforeImagePosition={project.beforeImagePosition}
+        afterImagePosition={project.afterImagePosition}
+        flipBeforeImage={project.flipBeforeImage}
+        flipAfterImage={project.flipAfterImage}
       />
       <p className={styles.description}>
         {project.description || project.highlights.join(' • ')}

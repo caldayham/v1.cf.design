@@ -7,9 +7,14 @@ interface BeforeAfterSliderProps {
   beforeImage: string;
   afterImage: string;
   alt: string;
+  aspectRatio?: number; // width / height (e.g., 1.333 for 4:3, 0.75 for 3:4)
+  beforeImagePosition?: string; // CSS object-position value
+  afterImagePosition?: string; // CSS object-position value
+  flipBeforeImage?: boolean; // Flip before image horizontally
+  flipAfterImage?: boolean; // Flip after image horizontally
 }
 
-export default function BeforeAfterSlider({ beforeImage, afterImage, alt }: BeforeAfterSliderProps) {
+export default function BeforeAfterSlider({ beforeImage, afterImage, alt, beforeImagePosition, afterImagePosition, flipBeforeImage, flipAfterImage }: BeforeAfterSliderProps) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -62,12 +67,30 @@ export default function BeforeAfterSlider({ beforeImage, afterImage, alt }: Befo
     <div className={styles.container} ref={containerRef}>
       {/* After image (right side) */}
       <div className={styles.imageWrapper}>
-        <img src={afterImage} alt={`${alt} - After`} className={styles.image} draggable={false} />
+        <img
+          src={afterImage}
+          alt={`${alt} - After`}
+          className={styles.image}
+          draggable={false}
+          style={{
+            ...(afterImagePosition ? { objectPosition: afterImagePosition } : {}),
+            ...(flipAfterImage ? { transform: 'scaleX(-1)' } : {}),
+          }}
+        />
       </div>
 
       {/* Before image (left side, clipped) */}
       <div className={styles.imageWrapper} style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}>
-        <img src={beforeImage} alt={`${alt} - Before`} className={styles.image} draggable={false} />
+        <img
+          src={beforeImage}
+          alt={`${alt} - Before`}
+          className={styles.image}
+          draggable={false}
+          style={{
+            ...(beforeImagePosition ? { objectPosition: beforeImagePosition } : {}),
+            ...(flipBeforeImage ? { transform: 'scaleX(-1)' } : {}),
+          }}
+        />
       </div>
 
       {/* Slider line and handle */}

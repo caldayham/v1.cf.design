@@ -164,6 +164,11 @@ export interface PublicProject {
   images?: string[];
   beforeImage?: string;
   afterImage?: string;
+  imageAspectRatio?: number; // width / height for before/after images
+  beforeImagePosition?: string; // CSS object-position value for before image
+  afterImagePosition?: string; // CSS object-position value for after image
+  flipBeforeImage?: boolean; // Flip before image horizontally
+  flipAfterImage?: boolean; // Flip after image horizontally
 
   // Optional testimonial
   hasTestimonial?: boolean;

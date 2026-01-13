@@ -545,21 +545,6 @@ export const internalProjects: InternalProject[] = [
  * All projects with sanitized data, ordered by job number
  */
 export const publicProjects: PublicProject[] = [
-  // Job #1 - Fremont
-  {
-    slug: 'fremont-backyard-refresh',
-    title: 'Fremont Backyard Refresh',
-    location: 'Fremont, CA',
-    completionDate: 'February 2025',
-    status: 'completed',
-    projectType: 'partial',
-    description: '',
-    scope: ['Pavers', 'Synthetic turf', 'Rock prep', 'Soil removal'],
-    highlights: ['Full backyard transformation', 'Low-maintenance turf'],
-    featuredImage: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
-    beforeImage: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
-  },
   // Job #2 - Half Moon Bay
   {
     slug: 'half-moon-bay-estate',
@@ -571,9 +556,10 @@ export const publicProjects: PublicProject[] = [
     description: '',
     scope: ['Full property pavers', 'Retaining walls', 'Landscape lighting', 'RV/Boat parking pad', 'Bullnose steps'],
     highlights: ['Large-scale installation', 'Custom RV parking solution', 'Integrated lighting'],
-    featuredImage: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80',
-    beforeImage: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80',
+    featuredImage: '/imgs/system-pavers-projects/2-marc-higaki/marc-driveway-finished.JPG',
+    beforeImage: '/imgs/system-pavers-projects/2-marc-higaki/marc-driveway-before.JPG',
+    afterImage: '/imgs/system-pavers-projects/2-marc-higaki/marc-driveway-finished.JPG',
+    imageAspectRatio: 1.333, // 5712 / 4284 (4:3)
   },
   // Job #3 - San Carlos
   {
@@ -586,9 +572,11 @@ export const publicProjects: PublicProject[] = [
     description: '',
     scope: ['Pavers', 'Bullnose steps'],
     highlights: ['Quick installation', 'Enhanced curb appeal'],
-    featuredImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
-    beforeImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
+    featuredImage: '/imgs/system-pavers-projects/3-andi-heintz/andi-porch-after.jpg',
+    beforeImage: '/imgs/system-pavers-projects/3-andi-heintz/andi-porch-before.jpg',
+    afterImage: '/imgs/system-pavers-projects/3-andi-heintz/andi-porch-after.jpg',
+    imageAspectRatio: 1.333, // 4032 / 3024 (4:3)
+    beforeImagePosition: 'center 85%', // Shift focal point further down
   },
   // Job #4 - San Mateo (Lake Street) - FULL PROPERTY
   {
@@ -601,19 +589,27 @@ export const publicProjects: PublicProject[] = [
     description: '',
     scope: ['Driveway pavers', 'Backyard patio', 'Synthetic turf', 'Retaining walls', 'Lighting', 'Dock access'],
     highlights: ['Complete property makeover', '1,840 SF turf', '12 integrated lights'],
-    featuredImage: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80',
+    featuredImage: '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-stoop-after.png',
     images: [
-      'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80',
-      'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80',
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
+      '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-stoop-after.png',
+      '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-driveway-after.png',
+      '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-fulldriveway-after.png',
+      '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-backpatio-after.png',
+      '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-backstoop-after.png',
+      '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-dockview-after.png',
+      '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-and-cal-after.png',
+      '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-dockview-before.jpg',
+      '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-backstoop-before.jpg',
+      '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-backpath-before.jpg',
+      '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-dockentrance-before.jpg',
     ],
     hasTestimonial: true,
     testimonialQuote: '',
   },
   // Job #5 - San Bruno
   {
-    slug: 'san-bruno-patio',
-    title: 'San Bruno Patio',
+    slug: 'san-bruno-stairs',
+    title: 'San Bruno Stairs',
     location: 'San Bruno, CA',
     completionDate: 'January 2025',
     status: 'completed',
@@ -621,9 +617,11 @@ export const publicProjects: PublicProject[] = [
     description: '',
     scope: ['Pavers', 'Bullnose steps', 'Drainage'],
     highlights: ['Improved drainage', 'Clean modern design'],
-    featuredImage: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80',
-    beforeImage: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80',
+    featuredImage: '/imgs/system-pavers-projects/5-theresa-abrahamson/theresa-stairs-after.png',
+    beforeImage: '/imgs/system-pavers-projects/5-theresa-abrahamson/theresa-stairs-before.jpg',
+    afterImage: '/imgs/system-pavers-projects/5-theresa-abrahamson/theresa-stairs-after.png',
+    imageAspectRatio: 0.75, // 3024 / 4032 (3:4 portrait)
+    flipAfterImage: true, // Flip horizontally to show stairs on the right
   },
   // Job #6 - Fremont (Cottage Rose)
   {
@@ -651,24 +649,42 @@ export const publicProjects: PublicProject[] = [
     description: '',
     scope: ['Paver installation'],
     highlights: ['Same-day consultation to sale', 'Flawless execution'],
-    featuredImage: 'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=800&q=80',
-    beforeImage: 'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?w=800&q=80',
+    featuredImage: '/imgs/system-pavers-projects/7-sharon-hudak/sharon-patio-finished.JPG',
+    beforeImage: '/imgs/system-pavers-projects/7-sharon-hudak/sharon-patio-before.jpg',
+    afterImage: '/imgs/system-pavers-projects/7-sharon-hudak/sharon-patio-finished.JPG',
+    imageAspectRatio: 1.333, // mixed: before is portrait (0.75), after is landscape (1.333) - using wider
   },
-  // Job #8 - Foster City
+  // Job #8 - Foster City (Front Yard)
   {
-    slug: 'foster-city-waterfront',
-    title: 'Foster City Waterfront',
+    slug: 'foster-city-front-yard',
+    title: 'Foster City Front Yard',
     location: 'Foster City, CA',
     completionDate: 'April 2025',
     status: 'completed',
     projectType: 'partial',
     description: '',
-    scope: ['Full property pavers', 'Curbing', 'Drainage', 'Landscape lighting'],
-    highlights: ['Large waterfront project', 'Complex drainage solutions'],
-    featuredImage: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80',
-    beforeImage: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80',
+    scope: ['Driveway pavers', 'Curbing', 'Drainage'],
+    highlights: ['Waterfront property', 'Complex drainage solutions'],
+    featuredImage: '/imgs/system-pavers-projects/9-ajit-singh/ajit-driveway-after.png',
+    beforeImage: '/imgs/system-pavers-projects/9-ajit-singh/ajit-driveway-before.JPG',
+    afterImage: '/imgs/system-pavers-projects/9-ajit-singh/ajit-driveway-after.png',
+    imageAspectRatio: 1.5, // mixed: before is 1.333, after is 1.5 - using wider
+  },
+  // Job #8 - Foster City (Back Yard)
+  {
+    slug: 'foster-city-back-yard',
+    title: 'Foster City Back Yard',
+    location: 'Foster City, CA',
+    completionDate: 'April 2025',
+    status: 'completed',
+    projectType: 'partial',
+    description: '',
+    scope: ['Patio pavers', 'Landscape lighting'],
+    highlights: ['Waterfront backyard', 'Entertainment space'],
+    featuredImage: '/imgs/system-pavers-projects/9-ajit-singh/ajit-backyard-after.png',
+    beforeImage: '/imgs/system-pavers-projects/9-ajit-singh/ajit-backyard-before.JPG',
+    afterImage: '/imgs/system-pavers-projects/9-ajit-singh/ajit-backyard-after.png',
+    imageAspectRatio: 1.5, // 1536 / 1024 - using wider estimate
   },
   // Job #9 - Hayward
   {
@@ -696,9 +712,10 @@ export const publicProjects: PublicProject[] = [
     description: '',
     scope: ['Pavers', 'Drainage'],
     highlights: ['Drainage solutions', 'Clean finish'],
-    featuredImage: 'https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?w=800&q=80',
-    beforeImage: 'https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1600585154084-4e5fe7c39198?w=800&q=80',
+    featuredImage: '/imgs/system-pavers-projects/10-steven-high/steven-driveway-after.png',
+    beforeImage: '/imgs/system-pavers-projects/10-steven-high/steven-driveway-before.png',
+    afterImage: '/imgs/system-pavers-projects/10-steven-high/steven-driveway-after.png',
+    imageAspectRatio: 1.5, // mixed: before is 1.333, after is 1.5 - using wider
   },
   // Job #11 - Santa Clara
   {
