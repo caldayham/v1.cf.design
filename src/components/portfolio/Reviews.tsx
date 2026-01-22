@@ -37,7 +37,6 @@ function ReviewCard({ review }: { review: Review }) {
         alt={review.alt}
         className={styles.reviewImage}
       />
-      <span className={styles.locationBadge}>{review.location}</span>
     </div>
   );
 }
@@ -46,7 +45,9 @@ export default function Reviews() {
   return (
     <div className={styles.reviews}>
       <h3 className={styles.reviewsTitle}>Homeowner reviews of Cal & Fynn</h3>
-      <p className={styles.subtitle}>Some reviews are from landscaping clients, some from builds we've done together</p>
+      <p className={styles.subtitle}></p>
+      <p className={styles.subtitle}>Some reviews are from landscaping clients, some are from our carpentry business. <br/>
+      This section is less about landscaping and more that Cal & Fynn are committed to excelent communication and final results.</p>
 
       <div className={styles.reviewsGrid}>
         {reviews.map((review, index) => (

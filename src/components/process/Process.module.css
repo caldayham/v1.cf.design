@@ -3,28 +3,49 @@
   background: var(--color-background);
 }
 
+.philosophySection {
+  padding: var(--spacing-3xl) var(--spacing-md);
+  background: var(--color-surface);
+}
+
 .processContainer {
   max-width: var(--max-width-container);
   margin: 0 auto;
 }
 
-.processGrid {
+.processStep {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacing-xl);
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-2xl);
+  align-items: center;
+  margin: var(--spacing-3xl) 0;
 }
 
-.processCard {
-  background: var(--color-white);
+.processStepReverse {
+  direction: rtl;
+}
+
+.processStepReverse > * {
+  direction: ltr;
+}
+
+.processStepVisible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.processImage {
   border-radius: var(--radius-xl);
-  padding: var(--spacing-xl);
-  box-shadow: var(--shadow-md);
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 4 / 3;
 }
 
-.processCard:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-xl);
+.processImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .processHeader {
@@ -99,7 +120,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--spacing-xl);
-  max-width: 1000px;
+  max-width: var(--max-width-container);
   margin: 0 auto;
 }
 
@@ -151,16 +172,91 @@
   background: var(--color-text-muted);
 }
 
+/* Philosophy Callout */
+.philosophyCallout {
+  margin-top: var(--spacing-3xl);
+  margin-bottom: var(--spacing-3xl);
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 0 25px 5px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.philosophyImage {
+  overflow: hidden;
+  max-height: 350px;
+}
+
+.philosophyImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.philosophyContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--spacing-xl);
+}
+
+.philosophyHeadline {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.2;
+}
+
+.philosophyText {
+  font-size: var(--font-size-base);
+  color: var(--color-text-light);
+  line-height: 1.7;
+  margin-bottom: var(--spacing-sm);
+}
+
+.philosophyText:last-child {
+  margin-bottom: 0;
+}
+
 /* Tablet */
 @media (max-width: 968px) {
-  .processGrid {
+  .processStep {
     grid-template-columns: 1fr;
     gap: var(--spacing-lg);
+    margin: var(--spacing-2xl) 0;
+  }
+
+  .processStepReverse {
+    direction: ltr;
   }
 
   .fitGrid {
     grid-template-columns: 1fr;
     gap: var(--spacing-lg);
+  }
+
+  .philosophyCallout {
+    grid-template-columns: 1fr;
+  }
+
+  .philosophyImage {
+    max-height: 300px;
+  }
+
+  .philosophyContent {
+    padding: var(--spacing-lg);
+  }
+
+  .philosophyHeadline {
+    font-size: var(--font-size-xl);
   }
 }
 
@@ -172,6 +268,10 @@
   .fitTitle {
     font-size: var(--font-size-lg);
   }
+
+  .processTitle {
+    font-size: var(--font-size-lg);
+  }
 }
 
 /* Mobile */
@@ -180,12 +280,22 @@
     padding: var(--spacing-xl) var(--spacing-sm);
   }
 
-  .processCard {
-    padding: var(--spacing-lg);
+  .processStep {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    margin: var(--spacing-xl) 0;
   }
 
   .processTitle {
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-base);
+  }
+
+  .processDescription {
+    font-size: var(--font-size-sm);
+  }
+
+  .processList li {
+    font-size: var(--font-size-sm);
   }
 
   .fitCard {
@@ -195,5 +305,17 @@
   .fitSection {
     margin-top: var(--spacing-2xl);
     padding-top: var(--spacing-xl);
+  }
+
+  .philosophyContent {
+    padding: var(--spacing-md);
+  }
+
+  .philosophyHeadline {
+    font-size: var(--font-size-lg);
+  }
+
+  .philosophyText {
+    font-size: var(--font-size-sm);
   }
 }

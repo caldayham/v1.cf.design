@@ -1,5 +1,10 @@
 .portfolio {
   padding: var(--spacing-3xl) 0;
+  background: var(--color-background);
+}
+
+.reviewsSection {
+  padding: var(--spacing-3xl) 0;
   background: var(--color-surface);
 }
 

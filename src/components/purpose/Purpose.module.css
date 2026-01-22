@@ -4,7 +4,7 @@
 }
 
 .aboutContainer {
-  max-width: 1100px;
+  max-width: var(--max-width-container);
   margin: 0 auto;
   text-align: center;
 }
@@ -26,6 +26,90 @@
   color: var(--color-primary);
 }
 
+/* Mission Statement Wrapper with Lines */
+.missionStatementWrapper {
+  margin: var(--spacing-2xl) 0;
+  text-align: center;
+}
+
+.missionHeadline {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  line-height: 1.6;
+  margin: 0;
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 2px solid var(--color-border);
+  letter-spacing: 0.05em;
+}
+
+/* Mission Description Card */
+.missionStatement {
+  background: linear-gradient(135deg, var(--color-white) 0%, #f8f9fa 100%);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-2xl);
+  margin: var(--spacing-2xl) 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.missionText {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text);
+  line-height: 1.8;
+  margin: 0 0 var(--spacing-md) 0;
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.missionDescription {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-light);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* Problems Section */
+.problemsSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-2xl);
+  margin: var(--spacing-2xl) 0;
+  text-align: left;
+}
+
+.problemColumn {
+  background: var(--color-white);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  box-shadow: var(--shadow-md);
+}
+
+.problemColumnTitle {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin: 0 0 var(--spacing-lg) 0;
+}
+
+.problemList {
+  margin: 0;
+  padding-left: var(--spacing-lg);
+  list-style-type: disc;
+}
+
+.problemList li {
+  font-size: var(--font-size-base);
+  color: var(--color-text-light);
+  line-height: 1.8;
+  margin-bottom: var(--spacing-md);
+}
+
+.problemList li:last-child {
+  margin-bottom: 0;
+}
+
 /* Heritage/Background Story Section */
 .heritageSection {
   display: grid;
@@ -34,6 +118,9 @@
   align-items: center;
   margin: var(--spacing-2xl) 0;
   text-align: left;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .heritageImage {
@@ -63,6 +150,16 @@
   margin: 0;
 }
 
+.heritageContent a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  transition: color var(--transition-fast);
+}
+
+.heritageContent a:hover {
+  color: var(--color-primary-light);
+}
+
 /* Core Principle Card */
 .principleCard {
   background: var(--color-white);
@@ -74,7 +171,7 @@
 }
 
 .principleText {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-2xl);
   color: var(--color-text);
   line-height: 1.8;
   margin: 0 0 var(--spacing-lg) 0;
@@ -86,11 +183,74 @@
 }
 
 .simpleStatement {
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-base);
   font-style: italic;
-  color: var(--color-text);
+  color: var(--color-text-muted);
   margin: 0;
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-normal);
+}
+
+/* Process Section */
+.processSection {
+  margin: var(--spacing-3xl) 0;
+}
+
+.processSectionTitle {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text);
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.processStep {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-2xl);
+  align-items: center;
+  margin: var(--spacing-3xl) 0;
+}
+
+.processStepReverse {
+  direction: rtl;
+}
+
+.processStepReverse > * {
+  direction: ltr;
+}
+
+.processImage {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  aspect-ratio: 4 / 3;
+}
+
+.processImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.processContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.processStepTitle {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+.processStepText {
+  font-size: var(--font-size-base);
+  color: var(--color-text-light);
+  line-height: 1.8;
+  margin: 0;
 }
 
 /* Challenge Section */
@@ -422,6 +582,53 @@
   .philosophyHeadline {
     font-size: var(--font-size-xl);
   }
+
+  .missionHeadline {
+    font-size: var(--font-size-lg);
+  }
+
+  .missionStatement {
+    padding: var(--spacing-lg);
+  }
+
+  .missionText {
+    font-size: var(--font-size-base);
+  }
+
+  .missionDescription {
+    font-size: var(--font-size-base);
+  }
+
+  .problemsSection {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  .problemColumn {
+    padding: var(--spacing-lg);
+  }
+
+  .problemColumnTitle {
+    font-size: var(--font-size-lg);
+  }
+
+  .processStep {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    margin: var(--spacing-2xl) 0;
+  }
+
+  .processStepReverse {
+    direction: ltr;
+  }
+
+  .processSectionTitle {
+    font-size: var(--font-size-xl);
+  }
+
+  .processStepTitle {
+    font-size: var(--font-size-lg);
+  }
 }
 
 /* Mobile */
@@ -528,6 +735,63 @@
   }
 
   .philosophyText {
+    font-size: var(--font-size-sm);
+  }
+
+  .missionHeadline {
+    font-size: var(--font-size-base);
+    padding: var(--spacing-md) 0;
+  }
+
+  .missionStatement {
+    padding: var(--spacing-md);
+    margin: var(--spacing-xl) 0;
+  }
+
+  .missionText {
+    font-size: var(--font-size-base);
+  }
+
+  .missionDescription {
+    font-size: var(--font-size-sm);
+  }
+
+  .problemsSection {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    margin: var(--spacing-xl) 0;
+  }
+
+  .problemColumn {
+    padding: var(--spacing-md);
+  }
+
+  .problemColumnTitle {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .problemList li {
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .processStep {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    margin: var(--spacing-xl) 0;
+  }
+
+  .processSectionTitle {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .processStepTitle {
+    font-size: var(--font-size-base);
+  }
+
+  .processStepText {
     font-size: var(--font-size-sm);
   }
 }

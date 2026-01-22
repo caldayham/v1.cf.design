@@ -113,6 +113,15 @@
   margin-bottom: var(--spacing-lg);
 }
 
+.slideSubtext {
+  display: block;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text-light);
+  margin-top: var(--spacing-xs);
+  line-height: 1.5;
+}
+
 .optionalLabel {
   font-weight: var(--font-weight-normal);
   font-size: var(--font-size-sm);

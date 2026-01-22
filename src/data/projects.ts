@@ -578,31 +578,55 @@ export const publicProjects: PublicProject[] = [
     imageAspectRatio: 1.333, // 4032 / 3024 (4:3)
     beforeImagePosition: 'center 85%', // Shift focal point further down
   },
-  // Job #4 - San Mateo (Lake Street) - FULL PROPERTY
+  // Job #4 - San Mateo (Dock Entrance)
   {
-    slug: 'lake-street-transformation',
-    title: 'Lake Street Transformation',
+    slug: 'lake-street-dock-entrance',
+    title: 'Lake Street Dock Entrance',
     location: 'San Mateo, CA',
     completionDate: 'February 2025',
     status: 'completed',
-    projectType: 'full-property',
+    projectType: 'partial',
     description: '',
-    scope: ['Driveway pavers', 'Backyard patio', 'Synthetic turf', 'Retaining walls', 'Lighting', 'Dock access'],
-    highlights: ['Complete property makeover', '1,840 SF turf', '12 integrated lights'],
-    featuredImage: '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-stoop-after.png',
-    images: [
-      '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-stoop-after.png',
-      '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-driveway-after.png',
-      '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-fulldriveway-after.png',
-      '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-backpatio-after.png',
-      '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-backstoop-after.png',
-      '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-dockview-after.png',
-      '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-and-cal-after.png',
-      '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-dockview-before.jpg',
-      '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-backstoop-before.jpg',
-      '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-backpath-before.jpg',
-      '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-dockentrance-before.jpg',
-    ],
+    scope: ['Pavers', 'Dock access pathway'],
+    highlights: ['Enhanced waterfront access', 'Durable paver installation'],
+    featuredImage: '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-dockview-after.png',
+    beforeImage: '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-dockentrance-before.jpg',
+    afterImage: '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-dockview-after.png',
+    imageAspectRatio: 1.5,
+    flipAfterImage: true,
+    afterImagePosition: 'right 30% top 30%',
+  },
+  // Job #4 - San Mateo (Driveway)
+  {
+    slug: 'lake-street-driveway',
+    title: 'Lake Street Driveway',
+    location: 'San Mateo, CA',
+    completionDate: 'February 2025',
+    status: 'completed',
+    projectType: 'partial',
+    description: '',
+    scope: ['Driveway pavers'],
+    highlights: ['Complete driveway renovation', 'Clean modern aesthetic'],
+    featuredImage: '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-driveway-after.png',
+    beforeImage: '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-driveway-before.png',
+    afterImage: '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-driveway-after.png',
+    imageAspectRatio: 1.5,
+  },
+  // Job #4 - San Mateo (Back Stoop)
+  {
+    slug: 'lake-street-back-stoop',
+    title: 'Lake Street Back Stoop',
+    location: 'San Mateo, CA',
+    completionDate: 'February 2025',
+    status: 'completed',
+    projectType: 'partial',
+    description: '',
+    scope: ['Pavers', 'Backyard access'],
+    highlights: ['Improved rear entry', 'Integrated design'],
+    featuredImage: '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-backstoop-after.png',
+    beforeImage: '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-backstoop-before.jpg',
+    afterImage: '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-backstoop-after.png',
+    imageAspectRatio: 1.5,
     hasTestimonial: true,
     testimonialQuote: '',
   },
@@ -622,21 +646,6 @@ export const publicProjects: PublicProject[] = [
     afterImage: '/imgs/system-pavers-projects/5-theresa-abrahamson/theresa-stairs-after.png',
     imageAspectRatio: 0.75, // 3024 / 4032 (3:4 portrait)
     flipAfterImage: true, // Flip horizontally to show stairs on the right
-  },
-  // Job #6 - Fremont (Cottage Rose)
-  {
-    slug: 'fremont-cottage-rose',
-    title: 'Fremont Modern Patio',
-    location: 'Fremont, CA',
-    completionDate: 'January 2025',
-    status: 'completed',
-    projectType: 'partial',
-    description: '',
-    scope: ['Pavers'],
-    highlights: ['Flawless execution', 'Quick turnaround'],
-    featuredImage: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80',
-    beforeImage: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80',
   },
   // Job #7 - Palo Alto
   {
@@ -686,21 +695,6 @@ export const publicProjects: PublicProject[] = [
     afterImage: '/imgs/system-pavers-projects/9-ajit-singh/ajit-backyard-after.png',
     imageAspectRatio: 1.5, // 1536 / 1024 - using wider estimate
   },
-  // Job #9 - Hayward
-  {
-    slug: 'hayward-pergola-patio',
-    title: 'Hayward Pergola Patio',
-    location: 'Hayward, CA',
-    completionDate: 'March 2025',
-    status: 'completed',
-    projectType: 'partial',
-    description: '',
-    scope: ['Paver patio', 'Rock preparation', 'Pergola footings'],
-    highlights: ['Pergola-ready foundation', '10-day completion'],
-    featuredImage: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=80',
-    beforeImage: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=800&q=80',
-  },
   // Job #10 - Foster City (Greenwich)
   {
     slug: 'foster-city-greenwich',
@@ -717,35 +711,21 @@ export const publicProjects: PublicProject[] = [
     afterImage: '/imgs/system-pavers-projects/10-steven-high/steven-driveway-after.png',
     imageAspectRatio: 1.5, // mixed: before is 1.333, after is 1.5 - using wider
   },
-  // Job #11 - Santa Clara
+  // Robin Deck - Cal & Fynn Construction
   {
-    slug: 'santa-clara-patio',
-    title: 'Santa Clara Patio',
-    location: 'Santa Clara, CA',
-    completionDate: 'April 2025',
+    slug: 'robin-deck',
+    title: 'Palo Alto Composite Deck',
+    location: 'Palo Alto, CA',
+    completionDate: 'January 2025',
     status: 'completed',
     projectType: 'partial',
     description: '',
-    scope: ['Pavers'],
-    highlights: ['Sleek patio design', 'Quick turnaround'],
-    featuredImage: 'https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=800&q=80',
-    beforeImage: 'https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1600573472591-ee6b68d14c68?w=800&q=80',
-  },
-  // Job #12 - Sunnyvale
-  {
-    slug: 'sunnyvale-turf-patio',
-    title: 'Sunnyvale Turf & Patio',
-    location: 'Sunnyvale, CA',
-    completionDate: 'April 2025',
-    status: 'completed',
-    projectType: 'partial',
-    description: '',
-    scope: ['Pavers', 'Synthetic turf'],
-    highlights: ['Low-maintenance turf', 'Modern design'],
-    featuredImage: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80',
-    beforeImage: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80',
-    afterImage: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80',
+    scope: ['Deck construction', 'Custom carpentry'],
+    highlights: ['Custom deck build', 'Quality craftsmanship'],
+    featuredImage: '/imgs/cal-fynn-construction/Robin-deck-after.jpg',
+    beforeImage: '/imgs/cal-fynn-construction/Robin-deck-before.png',
+    afterImage: '/imgs/cal-fynn-construction/Robin-deck-after.jpg',
+    imageAspectRatio: 1.333, // Estimated 4:3 ratio
   },
 ];
 

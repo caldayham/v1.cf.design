@@ -136,6 +136,10 @@ img {
   height: auto;
 }
 
+/* ================================
+   Global Text Utility Classes
+   ================================ */
+
 /* Section Title - shared across sections */
 .section-title {
   font-size: var(--font-size-4xl);
@@ -145,12 +149,60 @@ img {
   margin-bottom: var(--spacing-2xl);
 }
 
+/* Large Subtitle/Headline - for mission statements, large callouts */
+.text-headline {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text);
+  line-height: 1.8;
+}
+
+/* Medium Subtitle - for section subtitles, large body text */
+.text-subtitle {
+  font-size: var(--font-size-2xl);
+  color: var(--color-text);
+  line-height: 1.8;
+}
+
+/* Body Text - for main content, descriptions */
+.text-body {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-light);
+  line-height: 1.8;
+}
+
+/* Small Caption - for small notes, captions, meta text */
+.text-caption {
+  font-size: var(--font-size-lg);
+  font-style: italic;
+  color: var(--color-text-muted);
+  font-weight: var(--font-weight-normal);
+}
+
+/* Emphasis - for emphasized inline text */
+.text-emphasis {
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+}
+
 /* ================================
    Responsive Styles - Tablet
    ================================ */
 @media (max-width: 768px) {
   .section-title {
     font-size: var(--font-size-3xl);
+  }
+
+  .text-headline {
+    font-size: var(--font-size-2xl);
+  }
+
+  .text-subtitle {
+    font-size: var(--font-size-xl);
+  }
+
+  .text-body {
+    font-size: var(--font-size-base);
   }
 }
 
@@ -160,5 +212,21 @@ img {
 @media (max-width: 480px) {
   .section-title {
     font-size: var(--font-size-2xl);
+  }
+
+  .text-headline {
+    font-size: var(--font-size-xl);
+  }
+
+  .text-subtitle {
+    font-size: var(--font-size-lg);
+  }
+
+  .text-body {
+    font-size: var(--font-size-base);
+  }
+
+  .text-caption {
+    font-size: var(--font-size-sm);
   }
 }

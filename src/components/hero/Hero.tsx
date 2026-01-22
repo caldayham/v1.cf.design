@@ -20,7 +20,7 @@ export default function Hero() {
           <p className={styles.heroSubtitle}>San Mateo & Santa Clara County</p>
         </div>
         <div className={styles.heroCtaWrapper}>
-          <p className={styles.aboutText}>
+          <p className="text-body" style={{ maxWidth: '800px', margin: '0 auto var(--spacing-lg)' }}>
             Reimagining your outdoor space should be exciting, not stressful.
             For most homeowners, two hurdles stand between intent and reality: the right design, and the right contractor.
           </p>
@@ -32,7 +32,7 @@ export default function Hero() {
             </a>
             <p className={styles.heroDisclaimer}>*Free within 30 minutes of Palo Alto</p>
           </div>
-          <a href="#contact" className={`${styles.heroCta} ${styles.heroCtaSecondary}`}>
+          <a href="#purpose" className={`${styles.heroCta} ${styles.heroCtaSecondary}`}>
             About the Brothers
           </a>
         </div>

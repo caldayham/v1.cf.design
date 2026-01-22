@@ -15,7 +15,12 @@ const situationOptions = [
   'Unsatisfied with ongoing or compleated work',
 ];
 
-const yearsOwnedOptions = ['<1 year', '1-5 years', '5-20 years', '20+ years'];
+const referralOptions = [
+  'Contractor Referral',
+  'Homeowner Referral',
+  'Nextdoor Post',
+  'Google Search',
+];
 
 type SubmissionState = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -24,7 +29,7 @@ export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
   const [formData, setFormData] = useState({
     isLocal: null as boolean | null,
     situation: '',
-    yearsOwned: '',
+    referralSource: '',
     projectDescription: '',
     name: '',
     phone: '',
@@ -64,8 +69,8 @@ export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
     setTimeout(() => setCurrentStep(3), 300);
   };
 
-  const handleYearsSelect = (years: string) => {
-    setFormData({ ...formData, yearsOwned: years });
+  const handleReferralSelect = (referralSource: string) => {
+    setFormData({ ...formData, referralSource });
     // Auto-advance after short delay for visual feedback
     setTimeout(() => setCurrentStep(4), 300);
   };
@@ -75,7 +80,7 @@ export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
       setCurrentStep(2);
     } else if (currentStep === 2 && formData.situation) {
       setCurrentStep(3);
-    } else if (currentStep === 3 && formData.yearsOwned) {
+    } else if (currentStep === 3 && formData.referralSource) {
       setCurrentStep(4);
     } else if (currentStep === 4) {
       // Project description is optional
@@ -132,7 +137,7 @@ export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
     switch (currentStep) {
       case 1: return formData.isLocal !== null;
       case 2: return !!formData.situation;
-      case 3: return !!formData.yearsOwned;
+      case 3: return !!formData.referralSource;
       case 4: return true; // Project description is optional
       case 5: return !!formData.name && !!formData.phone;
       default: return false;
@@ -221,18 +226,18 @@ export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
                 </div>
               </div>
 
-              {/* Step 3: Years Owned */}
+              {/* Step 3: How Did You Hear About Us */}
               <div className={getStepClass(3)}>
                 <div className={styles.slideContent}>
-                  <h3 className={styles.slideQuestion}>How many years have you owned your home?</h3>
+                  <h3 className={styles.slideQuestion}>How did you hear about us?</h3>
 
-                  <div className={styles.optionsGrid}>
-                    {yearsOwnedOptions.map((option) => (
+                  <div className={styles.optionsList}>
+                    {referralOptions.map((option) => (
                       <button
                         key={option}
                         type="button"
-                        className={`${styles.optionButtonSmall} ${formData.yearsOwned === option ? styles.optionButtonSelected : ''}`}
-                        onClick={() => handleYearsSelect(option)}
+                        className={`${styles.optionButton} ${formData.referralSource === option ? styles.optionButtonSelected : ''}`}
+                        onClick={() => handleReferralSelect(option)}
                       >
                         {option}
                       </button>
@@ -244,7 +249,7 @@ export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
               {/* Step 4: Project Description */}
               <div className={getStepClass(4)}>
                 <div className={styles.slideContent}>
-                  <h3 className={styles.slideQuestion}>Additional notes?<br/> <span className={styles.optionalLabel}>(optional)</span></h3>
+                  <h3 className={styles.slideQuestion}>Additional notes?<br /> <span className={styles.optionalLabel}>(optional)</span></h3>
 
                   <textarea
                     className={styles.textarea}
@@ -259,9 +264,12 @@ export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
               {/* Step 5: Contact Information */}
               <div className={getStepClass(5)}>
                 <div className={styles.slideContent}>
-                  <h3 className={styles.slideQuestion}>How should we contact you?</h3>
-                  <p className={styles.privacyNote}>Cal or Fynn will reach out via text message within 24 hours 
-                    <br/>to schedule your consultation.</p>
+                  <h3 className={styles.slideQuestion}>
+                    How should we contact you?
+                    <br />
+                    <span className={styles.slideSubtext}>Cal or Fynn will reach out via text message within 24 hours.
+                    </span>
+                  </h3>
 
                   <div className={styles.inputGroup}>
                     <input
@@ -288,7 +296,7 @@ export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
 
                   <p className={styles.privacyNote}>
                     We only use your information to contact you directly.
-                    <br/>We never share your information.
+                    <br />We never share your information.
                   </p>
                 </div>
               </div>
