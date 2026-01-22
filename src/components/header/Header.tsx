@@ -14,7 +14,7 @@ const navLinks: NavLink[] = [
   { id: 'purpose', label: 'Purpose' },
   { id: 'process', label: 'Process' },
   { id: 'portfolio', label: 'Portfolio' },
-  { href: '/blog', label: 'Blog' },
+  { href: '/inquiries', label: 'Inquiries' },
 ];
 
 interface HeaderProps {

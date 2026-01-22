@@ -34,31 +34,13 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
             </div>
           )}
 
-          <div className={styles.details}>
-            <div className={styles.section}>
-              <h3 className={styles.sectionTitle}>Scope</h3>
-              <ul className={styles.list}>
-                {project.scope.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
+          {project.content && (
+            <div className={styles.contentSection}>
+              {project.content.split('\n\n').map((paragraph, index) => (
+                <p key={index} className={styles.contentParagraph}>{paragraph}</p>
+              ))}
             </div>
-
-            <div className={styles.section}>
-              <h3 className={styles.sectionTitle}>Highlights</h3>
-              <ul className={styles.list}>
-                {project.highlights.map((item, index) => (
-                  <li key={index}>{item}</li>
-                ))}
-              </ul>
-            </div>
-
-            {project.description && (
-              <div className={styles.section}>
-                <p className={styles.description}>{project.description}</p>
-              </div>
-            )}
-          </div>
+          )}
         </div>
 
         <button className={styles.closeButton} onClick={onClose}>

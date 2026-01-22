@@ -155,6 +155,9 @@ export interface PublicProject {
   // Description - detailed narrative about the project
   description?: string;
 
+  // Content - markdown content for detailed project writeup
+  content?: string;
+
   // Scope (simplified for display)
   scope: string[];
   highlights: string[];
