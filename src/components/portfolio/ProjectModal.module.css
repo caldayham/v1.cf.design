@@ -4,27 +4,22 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: var(--color-white);
   z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--spacing-md);
   overflow-y: auto;
 }
 
 .modal {
   position: relative;
   width: 100%;
-  max-width: 1000px;
+  min-height: 100vh;
   background-color: var(--color-white);
-  border-radius: var(--radius-xl);
-  max-height: 90vh;
-  overflow-y: auto;
 }
 
 .content {
   padding: var(--spacing-2xl);
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .title {
@@ -104,23 +99,24 @@
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background-color: var(--color-white);
+  background-color: var(--color-primary);
   border: none;
-  box-shadow: var(--shadow-xl);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: transform var(--transition-base);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
   z-index: 1001;
 }
 
 .closeButton:hover {
   transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
 
 .closeButton svg {
-  color: var(--color-text);
+  color: var(--color-white);
 }
 
 @media (max-width: 768px) {
