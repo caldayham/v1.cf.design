@@ -94,10 +94,37 @@ return (
             </div>
           </div>
 
-          {/* Step 3: Build - Image Left */}
+          {/* Step 3: Bid - Image Left */}
           <div
             ref={(el) => { stepRefs.current[2] = el; }}
             className={styles.processStep}>
+            <div className={styles.processImage}>
+              <img
+                src="/imgs/general-site-imgs/cal-perry-irrigationbox.JPG"
+                alt="Contractor bidding process"
+              />
+            </div>
+            <div className={styles.processContent}>
+              <div className={styles.processHeader}>
+                <span className={styles.processNumber}>03</span>
+                <h3 className={styles.processTitle}>Bid</h3>
+              </div>
+              <p className={styles.processDescription}>
+                Finding the right contractor shouldn&apos;t be a gamble. We help you navigate the bidding process with confidence:
+              </p>
+              <ul className={styles.processList}>
+                <li>Develop a list of compatible, licensed contractors in your area with proven track records</li>
+                <li>Draft an Invitation to Bid (ITB) that resonates with quality contractors</li>
+                <li>Negotiate terms for best alignment: progress payment schedules and checkpoints</li>
+                <li>Review all bids and provide our recommendation based on pricing and contractor communications</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Step 4: Build - Image Right */}
+          <div
+            ref={(el) => { stepRefs.current[3] = el; }}
+            className={`${styles.processStep} ${styles.processStepReverse}`}>
             <div className={styles.processImage}>
               <img
                 src="/imgs/general-site-imgs/fynn-digging-ruthellen.jpg"
@@ -106,17 +133,17 @@ return (
             </div>
             <div className={styles.processContent}>
               <div className={styles.processHeader}>
-                <span className={styles.processNumber}>03</span>
+                <span className={styles.processNumber}>04</span>
                 <h3 className={styles.processTitle}>Build</h3>
               </div>
               <p className={styles.processDescription}>
-                Navigating contractors shouldn&apos;t be overwhelming. We leverage our network of trusted craftsmen to:
+                Once contracts are signed, we stay involved to ensure your vision becomes reality:
               </p>
               <ul className={styles.processList}>
-                <li>Solicit bids from vetted specialists who take pride in their work</li>
-                <li>Filter proposals and identify the right fit for your project</li>
-                <li>Negotiate contract terms and payment schedules that protect you</li>
-                <li>Stay involved throughout construction until your installation is complete</li>
+                <li>Monitor construction progress against your approved plans</li>
+                <li>Address questions and changes that arise during installation</li>
+                <li>Advocate on your behalf if issues need resolution</li>
+                <li>Stay involved until your project is complete—final payment is only due after full installation</li>
               </ul>
             </div>
           </div>
@@ -127,7 +154,7 @@ return (
       <section className={styles.philosophySection}>
         <div className={styles.processContainer}>
           <div
-            ref={(el) => { stepRefs.current[3] = el; }}
+            ref={(el) => { stepRefs.current[4] = el; }}
             className={styles.philosophyCallout}>
             <div className={styles.philosophyImage}>
               <img
