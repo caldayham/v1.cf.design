@@ -4,8 +4,14 @@
   top: 0;
   left: 0;
   right: 0;
-  background: var(--color-white);
+  background: transparent;
   z-index: 100;
+  box-shadow: none;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.headerScrolled {
+  background: var(--color-white);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 

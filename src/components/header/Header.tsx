@@ -25,9 +25,23 @@ export default function Header({ hideCtaButton = false }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showCta, setShowCta] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const handleCtaVisibilityChange = useCallback((visible: boolean) => {
     setShowCta(visible);
+  }, []);
+
+  // Track scroll position for header transparency
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollThreshold = window.innerHeight * 0.2; // 20% of viewport height
+      setIsScrolled(window.scrollY > scrollThreshold);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial state
+
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Track which section is currently in view
@@ -96,7 +110,7 @@ export default function Header({ hideCtaButton = false }: HeaderProps) {
 
   return (
     <>
-      <header className={styles.header}>
+      <header className={`${styles.header} ${isScrolled ? styles.headerScrolled : ''}`}>
         <nav className={styles.nav}>
           {navLinks.map((link) => (
             link.href ? (

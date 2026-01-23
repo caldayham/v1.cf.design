@@ -4,6 +4,16 @@ import styles from './Hero.module.css';
 export default function Hero() {
   return (
     <section className={styles.hero} id="hero">
+      <div className={styles.heroBackgroundImageWrapper}>
+        <Image
+          src="/imgs/general-site-imgs/blue-wash-landscape.png"
+          alt=""
+          fill
+          sizes="100vw"
+          className={styles.heroBackgroundImage}
+          priority
+        />
+      </div>
       <div className={styles.heroBackgroundLogoWrapper}>
         <Image
           src="/cf-text-logo.png"

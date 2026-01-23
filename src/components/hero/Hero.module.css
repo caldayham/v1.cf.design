@@ -11,6 +11,21 @@
   overflow: hidden;
 }
 
+.heroBackgroundImageWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.heroBackgroundImage {
+  opacity: 0.3;
+  object-fit: cover;
+}
+
 .heroBackgroundLogoWrapper {
   position: absolute;
   top: 50%;
