@@ -71,11 +71,16 @@
   }
 }
 
-/* Mobile - 1 column */
+/* Mobile - 1 column, full width */
 @media (max-width: 768px) {
   .reviewsGrid {
     grid-template-columns: 1fr;
     gap: var(--spacing-lg);
+    padding: 0;
+  }
+
+  .reviewCard {
+    border-radius: 0;
   }
 
   .reviewsTitle {
@@ -84,5 +89,6 @@
 
   .subtitle {
     font-size: var(--font-size-sm);
+    padding: 0 var(--spacing-md);
   }
 }
