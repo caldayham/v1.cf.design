@@ -33,8 +33,8 @@ export default function PurposeSection() {
 
         {/* Section 1: Mission Statement Card */}
         <div className={styles.missionStatement}>
-          <p className="text-headline">
-            Create amazing landscaping engagements between homeowners and contractors.
+          <p className="text-headline" style={{ fontSize: '1.75rem' }}>
+            Create <span style={{ color: 'var(--color-primary)', fontWeight: 'bold' }}>amazing landscaping engagements</span> between homeowners and contractors.
           </p>
           <p className="text-body" style={{ marginTop: 'var(--spacing-md)', paddingTop: 'var(--spacing-md)', borderTop: '1px solid var(--color-border)' }}>
             Projects go wrong because of misaligned expectations.

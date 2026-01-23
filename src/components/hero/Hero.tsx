@@ -30,7 +30,7 @@ export default function Hero() {
           <p className={styles.heroSubtitle}>San Mateo & Santa Clara County</p>
         </div>
         <div className={styles.heroCtaWrapper}>
-          <p className="text-body" style={{ maxWidth: '800px', margin: '0 auto var(--spacing-lg)' }}>
+          <p className="text-body" style={{ maxWidth: '800px', margin: '0 auto var(--spacing-lg)', color: '#1a1a1a' }}>
             Reimagining your outdoor space should be exciting, not stressful.
             For most homeowners, two hurdles stand between intent and reality: the right design, and the right contractor.
           </p>

@@ -22,7 +22,7 @@
 }
 
 .heroBackgroundImage {
-  opacity: 0.3;
+  opacity: 0.2;
   object-fit: cover;
 }
 
@@ -65,7 +65,7 @@
 
 .heroSubtitle {
   font-size: var(--font-size-lg);
-  color: var(--color-text-muted);
+  color: #5a6370;
   font-weight: var(--font-weight-medium);
   margin: 0;
 }
