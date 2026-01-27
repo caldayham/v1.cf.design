@@ -7,6 +7,7 @@ import Purpose from '@/components/purpose';
 import Process from '@/components/process/Process';
 import Portfolio from '@/components/portfolio';
 import IntakeForm from '@/components/intake_form/IntakeForm';
+import Footer from '@/components/footer/Footer';
 
 export default function Home() {
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -23,6 +24,7 @@ export default function Home() {
       <Process />
       <Portfolio />
       <IntakeForm onFormVisible={handleFormVisible} />
+      <Footer />
     </>
   );
 }
