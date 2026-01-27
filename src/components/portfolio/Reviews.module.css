@@ -19,12 +19,13 @@
   font-style: italic;
 }
 
-/* Responsive grid layout */
+/* Masonry layout using CSS columns */
 .reviewsGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--spacing-md);
+  column-count: 2;
+  column-gap: var(--spacing-lg);
   padding: 0 var(--spacing-md);
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .reviewCard {
@@ -35,6 +36,8 @@
   transition: transform var(--transition-base), box-shadow var(--transition-base);
   background: var(--color-white);
   width: 100%;
+  break-inside: avoid;
+  margin-bottom: var(--spacing-lg);
 }
 
 .reviewCard:hover {
@@ -60,12 +63,8 @@
   border-radius: var(--radius-sm);
 }
 
-/* Tablet - 2 columns */
+/* Tablet */
 @media (max-width: 1024px) {
-  .reviewsGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .reviewsTitle {
     font-size: 1.75rem;
   }
@@ -74,9 +73,9 @@
 /* Mobile - 1 column, full width */
 @media (max-width: 768px) {
   .reviewsGrid {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
+    column-count: 1;
     padding: 0;
+    max-width: none;
   }
 
   .reviewCard {

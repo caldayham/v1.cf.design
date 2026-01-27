@@ -33,7 +33,7 @@ export default function Process() {
       });
     };
   }, []);
-return (
+  return (
     <>
       {/* White background for process steps */}
       <section className={styles.process} id="process">
@@ -46,7 +46,7 @@ return (
             className={styles.processStep}>
             <div className={styles.processImage}>
               <img
-                src="/imgs/general-site-imgs/cal-perry-irrigationbox.JPG"
+                src="/imgs/cal-fynn-construction/cal-fynn-tina.jpg"
                 alt="Initial consultation"
               />
             </div>
@@ -62,7 +62,7 @@ return (
                 <li>Honest, unbiased advice on achieving your outdoor goals</li>
                 <li>Material recommendations with cost estimates and trade-offs</li>
                 <li>Guidance on hiring contractors and maximizing your budget</li>
-                <li>Solutions that balance function and aesthetics</li>
+                <li>Solutions that fit your space while balancing function and aesthetics</li>
                 <li>A complete 3D site scan for future design work</li>
               </ul>
             </div>
@@ -74,7 +74,7 @@ return (
             className={`${styles.processStep} ${styles.processStepReverse}`}>
             <div className={styles.processImage}>
               <img
-                src="/imgs/general-site-imgs/Fynn-workshop.jpg"
+                src="/imgs/general-site-imgs/cal-fynn-outdoor-design.jpg"
                 alt="Design and planning"
               />
             </div>
@@ -84,13 +84,19 @@ return (
                 <h3 className={styles.processTitle}>Design</h3>
               </div>
               <p className={styles.processDescription}>
-
+              If you choose to move forward with our help beyond the consultation, we collaborate closely through focused design and revision meetings to construct and refine the details—until the design feels right for the home and the way the space will be lived in.
               </p>
               <ul className={styles.processList}>
                 <li><strong>2D Concepts:</strong> Two unique designs tailored to your space and preferences</li>
-                <li><strong>3D Visualizations:</strong> Realistic renderings so you can see the final result</li>
-                <li><strong>Construction Documents:</strong> Detailed plans ready to hand off to any contractor</li>
+                <li><strong>3D Visualizations:</strong> Realistic renderings so you can get a feel for the final result before construction starts</li>
+                <li><strong>Material Selection:</strong> Filtering hundreds of material options through your preferences and requirements, organizing stoneyard and nursery visits.</li>
+                <li><strong>Construction Documents:</strong> Detailed plans ready to hand off to your contractor, not only "what goes where" but also specifics on grading, drainage, and any product installation instructions we don't want contractors guessing on.</li>
+
               </ul>
+              <br/>
+              <p className={styles.processDescription}>
+                We want to leave this phase with a design that contractors know they can execute with minimal risk, so they don't price that risk into your quote. 
+              </p>
             </div>
           </div>
 
@@ -100,7 +106,7 @@ return (
             className={styles.processStep}>
             <div className={styles.processImage}>
               <img
-                src="/imgs/general-site-imgs/cal-perry-irrigationbox.JPG"
+                src="/imgs/general-site-imgs/Day-ham-family.jpg"
                 alt="Contractor bidding process"
               />
             </div>
@@ -115,8 +121,8 @@ return (
               <ul className={styles.processList}>
                 <li>Develop a list of compatible, licensed contractors in your area with proven track records</li>
                 <li>Draft an Invitation to Bid (ITB) that resonates with quality contractors</li>
-                <li>Negotiate terms for best alignment: progress payment schedules and checkpoints</li>
-                <li>Review all bids and provide our recommendation based on pricing and contractor communications</li>
+                <li>Negotiate terms for best alignment such as progress payment schedules and fair warranty terms</li>
+                <li>Review all bids and provide our recommendation </li>
               </ul>
             </div>
           </div>
@@ -127,9 +133,10 @@ return (
             className={`${styles.processStep} ${styles.processStepReverse}`}>
             <div className={styles.processImage}>
               <img
-                src="/imgs/general-site-imgs/fynn-digging-ruthellen.jpg"
+                src="/imgs/general-site-imgs/ignite-in-progress.jpg"
                 alt="Project management"
               />
+              <span className={styles.imageCaption}>Drone shot of our Lake Street project during installation</span>
             </div>
             <div className={styles.processContent}>
               <div className={styles.processHeader}>
@@ -141,7 +148,7 @@ return (
               </p>
               <ul className={styles.processList}>
                 <li>Monitor construction progress against your approved plans</li>
-                <li>Address questions and changes that arise during installation</li>
+                <li>Address questions and challenges that arise during installation </li>
                 <li>Advocate on your behalf if issues need resolution</li>
                 <li>Stay involved until your project is complete—final payment is only due after full installation</li>
               </ul>
@@ -165,7 +172,7 @@ return (
             <div className={styles.philosophyContent}>
               <h4 className={styles.philosophyHeadline}>No pressure. Just expertise.</h4>
               <p className={styles.philosophyText}>
-                We care deeply about every project we take on, and our hands-on experience in design and contractor management makes a free consultation genuinely valuable for anyone looking to transform their space.
+                We care deeply about every project we take on, and our hands-on experience in design and contractor management makes a <a href="#contact" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>free consultation</a> genuinely valuable for anyone looking to transform their space.
               </p>
             </div>
           </div>

@@ -545,6 +545,56 @@ export const internalProjects: InternalProject[] = [
  * All projects with sanitized data, ordered by job number
  */
 export const publicProjects: PublicProject[] = [
+  // Job #4 - San Mateo (Dock Entrance)
+  {
+    slug: 'lake-street-dock-entrance',
+    title: 'Lake Street Dock Entrance',
+    location: 'San Mateo, CA',
+    completionDate: 'February 2025',
+    status: 'completed',
+    projectType: 'partial',
+    description: '',
+    content: `This project involved rebuilding a difficult and uneven path leading down to a dock. The original concrete walkway had not been poured straight and required full demolition before any new work could begin.
+
+We removed the existing walkway, pulled back surrounding soil, and removed failing garden boxes installed by a previous contractor. New steps were built using concrete footings, topped with Belgard Catalina Grana Scandina Gray pavers and bullnose coping for each tread.
+
+The main walkway was installed in a three-piece random pattern with Dimensions Midnight accent borders in a soldier course. Three 24×24 Dimensions slabs were used as stepping stones leading toward the back steps.
+
+An AB Classic retaining wall in gray replaced the deteriorating garden blocks, holding back soil along the pathway. Integrated step lighting was added for nighttime visibility.
+
+In the backyard, turf replaced grass that had been difficult to maintain, creating a durable, low-water play area for kids and pets. Old stumps and garden boxes were removed to fully level the space and significantly increase its usability.`,
+    scope: ['Pavers', 'Dock access pathway'],
+    highlights: ['Enhanced waterfront access', 'Durable paver installation'],
+    featuredImage: '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-dockview-after.png',
+    beforeImage: '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-dockentrance-before.jpg',
+    afterImage: '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-dockview-after.png',
+    imageAspectRatio: 1.5,
+    flipAfterImage: true,
+    afterImagePosition: 'right 30% top 30%',
+  },
+  // Job #8 - Foster City (Back Yard)
+  {
+    slug: 'foster-city-back-yard',
+    title: 'Foster City Backyard',
+    location: 'Foster City, CA',
+    completionDate: 'April 2025',
+    status: 'completed',
+    projectType: 'partial',
+    description: '',
+    content: `The backyard originally consisted of mismatched steps, failing retaining walls, poor drainage, and unusable seating areas.
+
+We began by removing all existing hardscape, recycling brick from the old fireplace where possible. New steps were built using Positano pavers and coping, designed as double steps to make access easier for elderly family members.
+
+The entire area was regraded to direct water away from the center, preventing debris buildup. An Angelina edger was installed along the back to hold soil in place, and integrated step lighting was added for nighttime visibility.
+
+The result is a cohesive, functional backyard with improved drainage and far more usable space.`,
+    scope: ['Patio pavers', 'Landscape lighting'],
+    highlights: ['Waterfront backyard', 'Entertainment space'],
+    featuredImage: '/imgs/system-pavers-projects/9-ajit-singh/ajit-backyard-after.png',
+    beforeImage: '/imgs/system-pavers-projects/9-ajit-singh/ajit-backyard-before.JPG',
+    afterImage: '/imgs/system-pavers-projects/9-ajit-singh/ajit-backyard-after.png',
+    imageAspectRatio: 1.5, // 1536 / 1024 - using wider estimate
+  },
   // Job #2 - Half Moon Bay
   {
     slug: 'half-moon-bay-estate',
@@ -595,33 +645,6 @@ The final result provides a safer walking surface while blending seamlessly with
     afterImage: '/imgs/system-pavers-projects/3-andi-heintz/andi-porch-after.jpg',
     imageAspectRatio: 1.333, // 4032 / 3024 (4:3)
     beforeImagePosition: 'center 85%', // Shift focal point further down
-  },
-  // Job #4 - San Mateo (Dock Entrance)
-  {
-    slug: 'lake-street-dock-entrance',
-    title: 'Lake Street Dock Entrance',
-    location: 'San Mateo, CA',
-    completionDate: 'February 2025',
-    status: 'completed',
-    projectType: 'partial',
-    description: '',
-    content: `This project involved rebuilding a difficult and uneven path leading down to a dock. The original concrete walkway had not been poured straight and required full demolition before any new work could begin.
-
-We removed the existing walkway, pulled back surrounding soil, and removed failing garden boxes installed by a previous contractor. New steps were built using concrete footings, topped with Belgard Catalina Grana Scandina Gray pavers and bullnose coping for each tread.
-
-The main walkway was installed in a three-piece random pattern with Dimensions Midnight accent borders in a soldier course. Three 24×24 Dimensions slabs were used as stepping stones leading toward the back steps.
-
-An AB Classic retaining wall in gray replaced the deteriorating garden blocks, holding back soil along the pathway. Integrated step lighting was added for nighttime visibility.
-
-In the backyard, turf replaced grass that had been difficult to maintain, creating a durable, low-water play area for kids and pets. Old stumps and garden boxes were removed to fully level the space and significantly increase its usability.`,
-    scope: ['Pavers', 'Dock access pathway'],
-    highlights: ['Enhanced waterfront access', 'Durable paver installation'],
-    featuredImage: '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-dockview-after.png',
-    beforeImage: '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-dockentrance-before.jpg',
-    afterImage: '/imgs/system-pavers-projects/4-ignite-shanbaky/ignite-dockview-after.png',
-    imageAspectRatio: 1.5,
-    flipAfterImage: true,
-    afterImagePosition: 'right 30% top 30%',
   },
   // Job #4 - San Mateo (Driveway)
   {
@@ -727,29 +750,6 @@ The walkway and entry were completely rebuilt using Belgard Positano pavers, rep
     beforeImage: '/imgs/system-pavers-projects/9-ajit-singh/ajit-driveway-before.JPG',
     afterImage: '/imgs/system-pavers-projects/9-ajit-singh/ajit-driveway-after.png',
     imageAspectRatio: 1.5, // mixed: before is 1.333, after is 1.5 - using wider
-  },
-  // Job #8 - Foster City (Back Yard)
-  {
-    slug: 'foster-city-back-yard',
-    title: 'Foster City Backyard',
-    location: 'Foster City, CA',
-    completionDate: 'April 2025',
-    status: 'completed',
-    projectType: 'partial',
-    description: '',
-    content: `The backyard originally consisted of mismatched steps, failing retaining walls, poor drainage, and unusable seating areas.
-
-We began by removing all existing hardscape, recycling brick from the old fireplace where possible. New steps were built using Positano pavers and coping, designed as double steps to make access easier for elderly family members.
-
-The entire area was regraded to direct water away from the center, preventing debris buildup. An Angelina edger was installed along the back to hold soil in place, and integrated step lighting was added for nighttime visibility.
-
-The result is a cohesive, functional backyard with improved drainage and far more usable space.`,
-    scope: ['Patio pavers', 'Landscape lighting'],
-    highlights: ['Waterfront backyard', 'Entertainment space'],
-    featuredImage: '/imgs/system-pavers-projects/9-ajit-singh/ajit-backyard-after.png',
-    beforeImage: '/imgs/system-pavers-projects/9-ajit-singh/ajit-backyard-before.JPG',
-    afterImage: '/imgs/system-pavers-projects/9-ajit-singh/ajit-backyard-after.png',
-    imageAspectRatio: 1.5, // 1536 / 1024 - using wider estimate
   },
   // Job #10 - Foster City (Greenwich)
   {
