@@ -84,7 +84,7 @@ export default function Process() {
                 <h3 className={styles.processTitle}>Design</h3>
               </div>
               <p className={styles.processDescription}>
-              If you choose to move forward with our help beyond the consultation, we collaborate closely through focused design and revision meetings to construct and refine the details—until the design feels right for the home and the way the space will be lived in.
+              If you choose to move forward with our help beyond the consultation, we collaborate closely through focused review and revision meetings to construct and refine the details—until the design feels right for you, your home, and the way the space will be lived in.
               </p>
               <ul className={styles.processList}>
                 <li><strong>2D Concepts:</strong> Two unique designs tailored to your space and preferences</li>
