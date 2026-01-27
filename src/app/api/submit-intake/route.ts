@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { connectToDatabase } from '@/lib/mongodb';
 
 interface IntakeFormData {
   isLocal: boolean | null;
   situation: string;
-  yearsOwned: string;
+  referralSource: string;
   projectDescription: string;
   name: string;
   phone: string;
@@ -11,16 +12,6 @@ interface IntakeFormData {
 
 export async function POST(request: NextRequest) {
   try {
-    const appsScriptUrl = process.env.GOOGLE_APPS_SCRIPT_URL;
-
-    if (!appsScriptUrl || appsScriptUrl.includes('YOUR_SCRIPT_ID_HERE')) {
-      console.error('GOOGLE_APPS_SCRIPT_URL is not configured');
-      return NextResponse.json(
-        { success: false, error: 'Server configuration error' },
-        { status: 500 }
-      );
-    }
-
     const formData: IntakeFormData = await request.json();
 
     if (!formData.name || !formData.phone) {
@@ -30,20 +21,16 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const response = await fetch(appsScriptUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
+    const { db } = await connectToDatabase();
+
+    const result = await db.collection('intake_submissions').insertOne({
+      ...formData,
+      submittedAt: new Date(),
     });
 
-    const result = await response.json();
-
-    if (result.success) {
+    if (result.acknowledged) {
       return NextResponse.json({ success: true, message: 'Form submitted successfully' });
     } else {
-      console.error('Apps Script error:', result.error);
       return NextResponse.json(
         { success: false, error: 'Failed to save form data' },
         { status: 500 }
