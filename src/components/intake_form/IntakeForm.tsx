@@ -168,7 +168,6 @@ export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
       <div className={styles.formContainer}>
         <div className={styles.formHeader}>
           <h2 className={styles.formTitle}>Get Started</h2>
-          <p className={styles.formSubtitle}>A couple questions to see if we&apos;re the right fit!</p>
         </div>
 
         <div className={styles.formCard}>
