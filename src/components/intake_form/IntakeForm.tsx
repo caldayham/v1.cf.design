@@ -144,6 +144,39 @@ export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
     }
   };
 
+  const handleReloadForm = () => {
+    setFormData({
+      isLocal: null,
+      situation: '',
+      referralSource: '',
+      projectDescription: '',
+      name: '',
+      phone: '',
+    });
+    setCurrentStep(1);
+    setSubmissionState('idle');
+  };
+
+  const handleShare = async () => {
+    const shareData = {
+      title: 'CF Design',
+      text: 'Check out CF Design for your next home project!',
+      url: window.location.origin,
+    };
+
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+      } catch (err) {
+        // User cancelled or share failed, ignore
+      }
+    } else {
+      // Fallback: copy to clipboard
+      await navigator.clipboard.writeText(shareData.url);
+      alert('Link copied to clipboard!');
+    }
+  };
+
   // Success state - show thank you message
   if (submissionState === 'success') {
     return (
@@ -156,6 +189,22 @@ export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
                 We have received your information. Cal or Fynn will reach out
                 via text message within 24 hours to schedule your consultation.
               </p>
+              <div className={styles.successButtons}>
+                <button
+                  type="button"
+                  className={styles.backButton}
+                  onClick={handleReloadForm}
+                >
+                  Reload Form
+                </button>
+                <button
+                  type="button"
+                  className={styles.submitButton}
+                  onClick={handleShare}
+                >
+                  Share with a Friend
+                </button>
+              </div>
             </div>
           </div>
         </div>

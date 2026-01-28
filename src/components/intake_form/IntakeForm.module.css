@@ -50,11 +50,11 @@
   transition: width var(--transition-base);
 }
 
-/* Form Layout - Fixed height with bottom nav */
+/* Form Layout - Min height with bottom nav */
 .formBody {
   display: flex;
   flex-direction: column;
-  height: 380px;
+  min-height: 380px;
 }
 
 .formContent {
@@ -331,6 +331,25 @@
   padding: var(--spacing-2xl) var(--spacing-lg);
 }
 
+.successButtons {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  margin-top: var(--spacing-xl);
+}
+
+@media (max-width: 480px) {
+  .successButtons {
+    flex-direction: column;
+  }
+
+  .successButtons .backButton,
+  .successButtons .submitButton {
+    max-width: none;
+    width: 100%;
+  }
+}
+
 /* Error Message */
 .errorMessage {
   color: #dc2626;
@@ -363,7 +382,7 @@
   }
 
   .formBody {
-    height: 400px;
+    min-height: 400px;
   }
 
   .slideQuestion {
@@ -390,7 +409,7 @@
   }
 
   .formBody {
-    height: 420px;
+    min-height: 450px;
   }
 
   .buttonGroup {
