@@ -8,6 +8,7 @@ import Process from '@/components/process/Process';
 import Portfolio from '@/components/portfolio';
 import IntakeForm from '@/components/intake_form/IntakeForm';
 import Footer from '@/components/footer/Footer';
+import TabReturnModal from '@/components/tab_return_modal/TabReturnModal';
 
 export default function Home() {
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -25,6 +26,7 @@ export default function Home() {
       <Portfolio />
       <IntakeForm onFormVisible={handleFormVisible} />
       <Footer />
+      <TabReturnModal />
     </>
   );
 }

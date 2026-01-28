@@ -11,8 +11,8 @@ const TOTAL_STEPS = 5;
 
 const situationOptions = [
   'Just starting the process',
-  'Meeting with designers / contractors',
-  'Unsatisfied with ongoing or compleated work',
+  'Meeting with designers / builders',
+  'Unsatisfied with existing work',
 ];
 
 const referralOptions = [
