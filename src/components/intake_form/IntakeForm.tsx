@@ -94,6 +94,12 @@ export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
     }
   };
 
+  const getFirstName = (fullName: string): string => {
+    const trimmed = fullName.trim();
+    const parts = trimmed.split(/\s+/);
+    return parts[0];
+  };
+
   const handleSubmit = async () => {
     if (!formData.name || !formData.phone) return;
 
@@ -111,6 +117,8 @@ export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
 
       if (response.ok && result.success) {
         setSubmissionState('success');
+        // Mark that user has submitted a form (for TabReturnModal)
+        sessionStorage.setItem('cf_form_submitted', 'true');
       } else {
         setSubmissionState('error');
         setErrorMessage(result.error || 'Something went wrong. Please try again.');
@@ -184,7 +192,7 @@ export default function IntakeForm({ onFormVisible }: IntakeFormProps) {
         <div className={styles.formContainer}>
           <div className={styles.formCard}>
             <div className={styles.successMessage}>
-              <h3 className={styles.formTitle}>Thank you, {formData.name}!</h3>
+              <h3 className={styles.formTitle}>Thank you, {getFirstName(formData.name)}!</h3>
               <p className={styles.privacyNote}>
                 We have received your information. Cal or Fynn will reach out
                 via text message within 24 hours to schedule your consultation.

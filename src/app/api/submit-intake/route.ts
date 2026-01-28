@@ -10,6 +10,19 @@ interface IntakeFormData {
   phone: string;
 }
 
+function splitName(fullName: string): { firstName: string; lastName: string | null } {
+  const trimmed = fullName.trim();
+  const parts = trimmed.split(/\s+/);
+
+  if (parts.length === 1) {
+    return { firstName: parts[0], lastName: null };
+  }
+
+  const firstName = parts[0];
+  const lastName = parts.slice(1).join(' ');
+  return { firstName, lastName };
+}
+
 export async function POST(request: NextRequest) {
   try {
     const formData: IntakeFormData = await request.json();
@@ -21,10 +34,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const { firstName, lastName } = splitName(formData.name);
     const { db } = await connectToDatabase();
 
     const result = await db.collection('intake_submissions').insertOne({
       ...formData,
+      firstName,
+      lastName,
       submittedAt: new Date(),
     });
 
