@@ -16,6 +16,28 @@ export const metadata: Metadata = {
   icons: {
     icon: '/cf-icon.png',
   },
+  openGraph: {
+    title: 'Quality Landscapes - cf.design',
+    description: 'Transform your outdoor space with cf.design. Award-winning landscape design that elevates your property\'s beauty and value.',
+    url: 'https://cf.design',
+    siteName: 'CF Design',
+    images: [
+      {
+        url: '/imgs/cal-fynn-construction/cal-fynn-robin-deck.JPG',
+        width: 1200,
+        height: 630,
+        alt: 'Cal and Fynn from CF Design on a completed deck project',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Quality Landscapes - cf.design',
+    description: 'Transform your outdoor space with cf.design. Award-winning landscape design that elevates your property\'s beauty and value.',
+    images: ['/imgs/cal-fynn-construction/cal-fynn-robin-deck.JPG'],
+  },
 };
 
 export default function RootLayout({
